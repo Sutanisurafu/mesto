@@ -1,0 +1,7 @@
+.card {
+  display: grid;
+  grid-template-columns: auto ;
+  grid-auto-rows: auto min-content;
+  max-width: 282px;
+  background-color: white;
+}
