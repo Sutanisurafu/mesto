@@ -6,6 +6,6 @@
   grid-template-rows: min-content;
   align-items: baseline;
   align-self: center;
-  row-gap: 16px;
-  column-gap: 18px; 
+  row-gap: 12px;
+  column-gap: 20px; 
 }
