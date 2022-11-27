@@ -3,5 +3,8 @@
   grid-template-columns: auto ;
   grid-auto-rows: auto min-content;
   max-width: 282px;
+  max-height: 361px;
   background-color: white;
+  border-radius: 10px;
+  
 }

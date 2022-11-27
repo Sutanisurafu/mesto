@@ -1,4 +1,8 @@
 .card__title {
+  margin: 0;
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-bottom: 30px;
   grid-row: 2;
   grid-column: 1;
 }
