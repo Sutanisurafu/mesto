@@ -6,3 +6,11 @@
   background-color: black;
   background-position: center;
 }
+
+@media screen and (max-width: 650px) {
+  .profile__edit-btn {
+    width: 18px;
+    height: 18px;
+  }
+  
+}

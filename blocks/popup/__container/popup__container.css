@@ -9,3 +9,11 @@
   height: 330px;
   outline: 1px red solid;
 }
+
+@media screen and (max-width: 550px) {
+  .popup__container {
+    width: 282px;
+    height: 322px;
+  }
+  
+}
