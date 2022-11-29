@@ -7,3 +7,12 @@
   margin-bottom: 41px;
   align-self: flex-start;
 }
+
+
+@media screen and (max-width: 550px) {
+  .header {
+    padding-bottom: 30px;
+    margin-top: 28px;
+  }
+  
+}

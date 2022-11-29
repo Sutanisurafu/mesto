@@ -5,10 +5,17 @@
   background-repeat: no-repeat;
   background-color: black;
   background-position: center;
+  border: 1px white solid;
+}
+
+.profile__edit-btn:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 650px) {
   .profile__edit-btn {
+    margin-left: 3px;
+    justify-self: flex-end;
     width: 18px;
     height: 18px;
   }

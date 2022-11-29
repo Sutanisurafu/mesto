@@ -8,6 +8,8 @@
 
 @media screen and (max-width: 650px) {
   .profile {
+    margin-bottom: 36px;
+    max-width: 396px;
     flex-direction: column;
     align-items: center;
   }

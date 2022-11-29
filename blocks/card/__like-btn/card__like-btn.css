@@ -12,3 +12,8 @@
   justify-self: flex-end;
   grid-row: 2;
 }
+
+
+.card__like-btn:hover {
+  background-image: url(/image/like-button_hover.svg);
+}
