@@ -6,6 +6,7 @@
   background-color: black;
   background-position: center;
   border: 1px white solid;
+  align-self: center;
 }
 
 .profile__edit-btn:hover {

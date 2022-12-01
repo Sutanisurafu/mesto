@@ -1,4 +1,4 @@
-.profile {
+/*.profile {
   margin: 0;
   display: flex;
   max-width: 880px;
@@ -11,6 +11,28 @@
     margin-bottom: 36px;
     max-width: 396px;
     flex-direction: column;
+    align-items: center;
+  }
+}*/
+
+.profile {
+  margin: 0;
+  display: -moz-box;
+  display: flex;
+  max-width: 880px;
+  -moz-box-align: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 650px) {
+  .profile {
+    margin-bottom: 36px;
+    max-width: 396px;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -moz-box-align: center;
     align-items: center;
   }
 }
