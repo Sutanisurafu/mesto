@@ -32,13 +32,13 @@ popupCloseButton.addEventListener('click', popupClose);
 profileEditButton.addEventListener('click',popupOpen);
 
 //редактирование профиля
-document.querySelector('.input__text_type_name').value = document.querySelector('.profile__title').textContent;
-document.querySelector('.input__text_type_speciality').value = document.querySelector('.profile__text').textContent;
+document.querySelector('.popup__input-name').value = document.querySelector('.profile__title').textContent;
+document.querySelector('.popup__input-speciality').value = document.querySelector('.profile__text').textContent;
 document.querySelector('.popup__submit-btn').onclick = editProfile;
 
 function editProfile() {
-  let inputName = document.querySelector('.input__text_type_name').value;
-  let inputSpeciality = document.querySelector('.input__text_type_speciality').value;
+  let inputName = document.querySelector('.popup__input-name').value;
+  let inputSpeciality = document.querySelector('.popup__input-speciality').value;
   document.querySelector('.profile__title').innerHTML = inputName;
   document.querySelector('.profile__text').innerHTML = inputSpeciality;
   console.log(inputName, inputSpeciality);
