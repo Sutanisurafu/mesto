@@ -7,7 +7,6 @@
   align-items: center;
   width: 430px;
   height: 330px;
-  outline: 1px red solid;
 }
 
 @media screen and (max-width: 550px) {

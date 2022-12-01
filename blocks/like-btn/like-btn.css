@@ -1,4 +1,4 @@
-.card__like-btn {
+.like-btn {
   margin-right: 20px;
   background-image: url(/image/like-button.svg);
   background-repeat: no-repeat;
@@ -14,7 +14,7 @@
 }
 
 
-.card__like-btn:hover {
+.like-btn:hover {
   background-image: url(/image/like-button_hover.svg);
 }
 

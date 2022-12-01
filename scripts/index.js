@@ -5,7 +5,7 @@
 
 const profileEditButton = document.querySelector('.profile__edit-btn');
 const profileAddButton = document.querySelector('.profile__add-btn');
-const cardLikeButton = document.querySelector('.card__like-btn');
+const cardLikeButton = document.querySelectorAll('.like-btn');
 const popup = document.querySelector('.popup');
 const popupCloseButton = document.querySelector('.popup__close');
 const popupContainer = document.querySelector('.popup__container');
@@ -47,8 +47,14 @@ function editProfile() {
 
 //кнопка лайк
 
-//cardLikeButton.onclick = buttonActive;
 
-//function buttonActive() {
-//  cardLikeButton.setAttribute('background-image', 'url(/image/like-button_type_active.svg)');
-//}
+for (let i = 0; i < cardLikeButton.length; i++) {
+  cardLikeButton[i].addEventListener("click", function liki() {
+    if(cardLikeButton[i].classList.contains('like-btn_condition_active')) {
+      cardLikeButton[i].classList.remove("like-btn_condition_active")
+    } else {cardLikeButton[i].classList.add("like-btn_condition_active");
+  }
+    
+  });
+}
+ 
