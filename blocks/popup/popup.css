@@ -1,5 +1,4 @@
 .popup {
-
   display: flex;
   position: fixed;
   background: rgba(0,0,0,0.5);
@@ -13,4 +12,12 @@
   opacity: 0;
   z-index: -1;
   /*transition: opacity 1s. visibility 0s. 1s. z-index 0s. 1s.;*/
+}
+
+@media screen and (max-width: 550px) {
+  .popup {
+    align-items:flex-start;
+    top: 123px;
+  }
+  
 }
