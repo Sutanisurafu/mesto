@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
+
 <body class="page">
   <header class="header">
     <div class="header__logo"></div>
   </header>
   <main class="content">
-   <content class="profile">
-      <img class="profile__avatar" src="./image/avatar.jpg" alt="Аватар" class="avatar">
+    <section class="profile">
+      <img class="profile__avatar" src="./image/avatar.jpg" alt="Аватар">
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button class="profile__edit-btn"></button>
         <h2 class="profile__text">Исследователь океана</h2>
       </div>
       <button class="profile__add-btn"></button>
-    </content>
-    <content class="cards">
+    </section>
+    <section class="cards">
       <div class="card">
         <img src="./image/karachaevsk-castle.png" alt="Замок" class="card__image">
         <h2 class="card__title">Карачаевск</h2>
@@ -51,9 +53,9 @@
         <h2 class="card__title">Домбай</h2>
         <button class="like-btn"></button>
       </div>
-
+    </section>
   </main>
-    <footer class="footer">
+  <footer class="footer">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
   <div class="popup ">
@@ -67,4 +69,5 @@
   </div>
   <script src="./scripts/index.js"></script>
 </body>
+
 </html>
