@@ -1,6 +1,6 @@
 .like-btn {
   margin-right: 20px;
-  background-image: url(/image/like-button.svg);
+  background-image: url(../../image/like-button.svg);
   background-repeat: no-repeat;
   background-color: white;
   align-self: center;
@@ -15,6 +15,6 @@
 
 
 .like-btn:hover {
-  background-image: url(/image/like-button_hover.svg);
+  background-image: url(../../image/like-button_hover.svg);
 }
 
