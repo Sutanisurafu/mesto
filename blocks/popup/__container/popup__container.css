@@ -10,10 +10,8 @@
 
 @media screen and (max-width: 550px) {
   .popup__container {
-    justify-content: flex-start;
     align-items: center;
     width: 282px;
-    margin-top: 123px;
   }
   
 }
