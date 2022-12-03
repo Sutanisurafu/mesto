@@ -3,8 +3,8 @@ const cardLikeButton = document.querySelectorAll('.like-btn');
 const popup = document.querySelector('.popup');
 const popupCloseButton = document.querySelector('.popup__close');
 const popupContainer = document.querySelector('.popup__container');
-const ProfileName = document.querySelector('.profile__title');
-const ProfileSpeciality = document.querySelector('.profile__text');
+const profileName = document.querySelector('.profile__title');
+const profileSpeciality = document.querySelector('.profile__text');
 const popupForm = document.querySelector('.popup__form');
 const inputName = document.querySelector('.popup__input_type_name');
 const inputSpeciality = document.querySelector('.popup__input_type_speciality');
@@ -12,6 +12,8 @@ const inputSpeciality = document.querySelector('.popup__input_type_speciality');
 //открытие попапа
 function popupOpen() {
   popup.classList.add('popup_opened');
+  inputName.value = profileName.textContent;
+  inputSpeciality.value = profileSpeciality.textContent;
 }
 
 //закрытие попапа
@@ -22,8 +24,8 @@ function popupClose() {
 //сохранение данных формы 
 function handleFormSubmit (evt) {
   evt.preventDefault();
-  ProfileName.textContent = inputName.value;
-  ProfileSpeciality.textContent = inputSpeciality.value;
+  profileName.textContent = inputName.value;
+  profileSpeciality.textContent = inputSpeciality.value;
   popupClose();
 }
 
