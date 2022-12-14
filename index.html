@@ -23,8 +23,15 @@
       <button type="button" class="profile__add-btn"></button>
     </section>
     <section class="cards">
-      <article class="card">
-        <img src="./image/karachaevsk-castle.png" alt="Замок" class="card__image">
+      <template id="cards-template">
+        <article class="card">
+          <img src="" alt="" class="card__image">
+          <h2 class="card__title"></h2>
+          <button type="button" class="like-btn"></button>
+        </article>
+      </template>
+      <!--<article class="card">
+        <img src="/image/karachaevsk-castle.png" alt="Замок" class="card__image">
         <h2 class="card__title">Карачаевск</h2>
         <button type="button" class="like-btn"></button>
       </article>
@@ -52,7 +59,7 @@
         <img src="./image/dombai.png" alt="Снежные горы" class="card__image">
         <h2 class="card__title">Домбай</h2>
         <button type="button" class="like-btn"></button>
-      </article>
+      </article>-->
     </section>
   </main>
   <footer class="footer">
