@@ -30,36 +30,7 @@
           <button type="button" class="like-btn"></button>
         </article>
       </template>
-      <!--<article class="card">
-        <img src="/image/karachaevsk-castle.png" alt="Замок" class="card__image">
-        <h2 class="card__title">Карачаевск</h2>
-        <button type="button" class="like-btn"></button>
-      </article>
-      <article class="card">
-        <img src="./image/kungur-kave.png" alt="Пещера" class="card__image">
-        <h2 class="card__title">Кунгурская пещера</h2>
-        <button type="button" class="like-btn"></button>
-      </article>
-      <article class="card">
-        <img src="./image/elbrus-mountian.png" alt="Гора в далеке" class="card__image">
-        <h2 class="card__title">Эльбрус</h2>
-        <button type="button" class="like-btn"></button>
-      </article>
-      <article class="card">
-        <img src="./image/ladozhskoe-ozero.png" alt="Мыс" class="card__image">
-        <h2 class="card__title">Ладога</h2>
-        <button type="button" class="like-btn"></button>
-      </article>
-      <article class="card">
-        <img src="./image/chusovaya-river.png" alt="Река" class="card__image">
-        <h2 class="card__title">Чусовая</h2>
-        <button type="button" class="like-btn"></button>
-      </article>
-      <article class="card">
-        <img src="./image/dombai.png" alt="Снежные горы" class="card__image">
-        <h2 class="card__title">Домбай</h2>
-        <button type="button" class="like-btn"></button>
-      </article>-->
+     
     </section>
   </main>
   <footer class="footer">
@@ -68,12 +39,23 @@
 
   <div class="popup">
     <div class="popup__container">
-      <button type="button" class="popup__close"></button>
+      <button type="button" class="popup__close popup__close_type_profile"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="profile-form" class="popup__form" action="#" method="get">
         <input name="profile-name" type="text" class="popup__input popup__input_type_name" placeholder="Введите имя">
         <input name="profile-speciality" type="text" class="popup__input popup__input_type_speciality" placeholder="Введите специальность">
         <button name="profile-submit-btn" type="submit" class="popup__submit-btn">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_card_adder">
+    <div class="popup__container">
+      <button type="button" class="popup__close popup__close_type_cards"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form name="card-form" class="popup__form" action="#" method="get">
+        <input name="card-name" type="text" class="popup__input popup__input_type_place" placeholder="Название">
+        <input name="card-image" type="text" class="popup__input popup__input_type_image-link" placeholder="Ссылка на картинку">
+        <button name="card-submit-btn" type="submit" class="popup__submit-btn">Сохранить</button>
       </form>
     </div>
   </div>
