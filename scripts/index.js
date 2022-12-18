@@ -79,15 +79,21 @@ const template = document.querySelector('#cards-template');
 const createCard = (place, link) => {
   const card = template.content.querySelector('.card').cloneNode(true);
   const likeBtn = card.querySelector('.like-btn');
+  const deleteBtn = card.querySelector('.trash-btn');
   card.querySelector('.card__title').textContent = place;
   card.querySelector('.card__image').src = link;
+  //удаление карточки
+  deleteBtn.addEventListener('click', () => {
+    card.remove();
+  })
   //лайк карточки
-  card.querySelector('.like-btn').addEventListener('click', () => {
+    likeBtn.addEventListener('click', () => {
     if(likeBtn.classList.contains('like-btn_active')) {
       likeBtn.classList.remove('like-btn_active')
     } else {likeBtn.classList.add('like-btn_active');
   }
   });
+
   return card;
 }
 
