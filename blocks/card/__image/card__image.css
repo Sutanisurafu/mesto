@@ -7,3 +7,7 @@
   grid-column: 1/2;
   object-fit: cover;
 }
+
+.card__image:hover {
+  cursor: pointer;
+}

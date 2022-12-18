@@ -82,8 +82,14 @@ const createCard = (place, link) => {
   const deleteBtn = card.querySelector('.trash-btn');
   card.querySelector('.card__title').textContent = place;
   card.querySelector('.card__image').src = link;
+  //открытие картинки в полный размер
+  card.addEventListener('click', () => {
+   
+    console.log("click");
+  })
   //удаление карточки
-  deleteBtn.addEventListener('click', () => {
+  deleteBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
     card.remove();
   })
   //лайк карточки
