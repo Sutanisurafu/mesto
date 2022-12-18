@@ -16,6 +16,7 @@ const cardName = document.getElementsByName('card-name');
 const cardImage = document.getElementsByName('card-image');
 const cardSubmitButton = document.getElementsByName('card-submit-btn');
 const sectionCards = document.querySelector('.cards');
+const imagePopup = document.querySelector('.image-popup');
 
 //массив данных карточек
 const cardsArr = [
@@ -83,7 +84,8 @@ const createCard = (place, link) => {
   card.querySelector('.card__title').textContent = place;
   card.querySelector('.card__image').src = link;
   //открытие картинки в полный размер
-  card.addEventListener('click', () => {   
+  card.addEventListener('click', () => {  
+    imagePopup.classList.add('image-popup_opened');
     console.log("click");
   })
   //удаление карточки
