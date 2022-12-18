@@ -17,7 +17,9 @@ const cardImage = document.getElementsByName('card-image');
 const cardSubmitButton = document.getElementsByName('card-submit-btn');
 const sectionCards = document.querySelector('.cards');
 const imagePopup = document.querySelector('.image-popup');
-
+const imagePopupClose = document.querySelector('.image-popup__close');
+const imagePopupItem = document.querySelector('.image-popup__item');
+const imagePopupCaption = document.querySelector('.image-popup__caption')
 //массив данных карточек
 const cardsArr = [
   {
@@ -73,6 +75,11 @@ function popupCardClose() {
   popupCardAdder.classList.remove('popup_opened');
 }
 
+// закрытие попапа с картинкой 
+function popupImageClose() {
+  imagePopup.classList.remove('image-popup_opened')
+}
+
 //добавление карточек на страницу через template
 const cardsContainer = document.querySelector('.cards');
 const template = document.querySelector('#cards-template');
@@ -83,11 +90,13 @@ const createCard = (place, link) => {
   const deleteBtn = card.querySelector('.trash-btn');
   card.querySelector('.card__title').textContent = place;
   card.querySelector('.card__image').src = link;
-  //открытие картинки в полный размер
+  //открытие попапа с  картинкой
   card.addEventListener('click', () => {  
     imagePopup.classList.add('image-popup_opened');
-    console.log("click");
+    imagePopupItem.src = card.querySelector('.card__image').src
+    imagePopupCaption.textContent = card.querySelector('.card__title').textContent
   })
+  
   //удаление карточки
   deleteBtn.addEventListener('click', (event) => {
     event.stopPropagation();
@@ -131,3 +140,4 @@ popupForm.addEventListener('submit', handleFormSubmit);
 popupCardForm.addEventListener('submit', handleCardSubmit);
 addButton.addEventListener('click', popupCardOpen);
 cardPopupCloseButton.addEventListener('click', popupCardClose);
+imagePopupClose.addEventListener('click', popupImageClose) 
