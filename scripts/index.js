@@ -83,8 +83,7 @@ const createCard = (place, link) => {
   card.querySelector('.card__title').textContent = place;
   card.querySelector('.card__image').src = link;
   //открытие картинки в полный размер
-  card.addEventListener('click', () => {
-   
+  card.addEventListener('click', () => {   
     console.log("click");
   })
   //удаление карточки
