@@ -1,4 +1,4 @@
-.image-popup__close {
+.popup__image_close-btn {
   padding: 0;
   top: -40px;
   right: -40px;
@@ -14,12 +14,12 @@
   border-style: none;
 }
 
-.popup__close:hover {
+.popup__image_close-btn:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 320px) {
-  .image-popup__close {
+  .popup__image_close-btn {
     right: 0;
     top: -36px;
     width: 20px;

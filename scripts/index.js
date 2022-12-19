@@ -14,9 +14,9 @@ const cardName = document.getElementsByName('card-name');
 const cardImage = document.getElementsByName('card-image');
 const cardSubmitButton = document.getElementsByName('card-submit-btn');
 const imagePopup = document.querySelector('.popup_image-popup');
-const imagePopupCloseButton = document.querySelector('.image-popup__close');
-const imagePopupItem = document.querySelector('.image-popup__item');
-const imagePopupCaption = document.querySelector('.image-popup__caption')
+const imagePopupCloseButton = document.querySelector('.popup__image_close-btn');
+const imagePopupItem = document.querySelector('.popup__image-item');
+const imagePopupCaption = document.querySelector('.popup__image-caption')
 const cardPlace = document.querySelector('.popup__input_type_place');
 const cardLink = document.querySelector('.popup__input_type_image-link');
 //открытие попапа редактирования профайла
