@@ -11,6 +11,8 @@
 @media screen and (max-width: 650px) {
   .profile {
     margin-bottom: 36px;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 396px;
     -moz-box-orient: vertical;
     -moz-box-direction: normal;
