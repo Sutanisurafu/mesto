@@ -62,11 +62,9 @@ const createInitialCard = (place, link) => {
     card.remove();
   })
   //лайк карточки
-    likeBtn.addEventListener('click', () => {
-    if(likeBtn.classList.contains('like-btn_active')) {
-      likeBtn.classList.remove('like-btn_active')
-    } else {likeBtn.classList.add('like-btn_active');
-  }
+    likeBtn.addEventListener('click', (event) => {
+      const target = event.target
+      target.classList.toggle('like-btn_active');
   });
   return card;
 }
