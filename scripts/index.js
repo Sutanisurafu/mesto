@@ -19,7 +19,8 @@ const imagePopupItem = document.querySelector('.popup__image-item');
 const imagePopupCaption = document.querySelector('.popup__image-caption')
 const cardPlace = document.querySelector('.popup__input_type_place');
 const cardLink = document.querySelector('.popup__input_type_image-link');
-
+const popupList = document.querySelectorAll('.popup');
+console.log(popupList);
 //Функция открытия попапов 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -29,6 +30,24 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
+  //Закрытие попапов клавишей Esc
+  document.addEventListener('keydown', function (evt)  {
+    if (evt.keyCode == 27) {
+      popupList.forEach((popup) => {
+        closePopup(popup);
+      })
+    }
+  });
+
+  //Закрытие попапов нажатием на оверлей
+  document.addEventListener('click', function (event)  {
+    if (event.target === document.querySelector('.popup_opened')) {
+      popupList.forEach((popup) => {
+        closePopup(popup);
+      })
+    }
+   });
 
 //сохранение данных формы профайла
 function handleFormSubmit (evt) {
@@ -96,9 +115,11 @@ popupProfileAddButton.addEventListener('click', () => openPopup(popupAddCard));
 popupCardCloseButton.addEventListener('click', () => closePopup(popupAddCard));
 imagePopupCloseButton.addEventListener('click', () => closePopup(imagePopup));
 
-//открытие попапа редактирования профайла
-// function openEditProfilePopup() {
-//   popupEditProfile.classList.add('popup_opened');
-//   popupInputName.value = profileName.textContent;
-//   popupInputSpeciality.value = profileSpeciality.textContent;
+//закрытие попапов клавишей Esc
+// popupEditProfile.addEventListener('keydown', () => keyPress(popupEditProfile));
+// function keyPress (popup, e) {
+//   if(e.key === "Escape") {
+//       closePopup(popup);
+//       console.log("lolo")
+//   }
 // }
