@@ -20,7 +20,7 @@ const imagePopupCaption = document.querySelector('.popup__image-caption')
 const cardPlace = document.querySelector('.popup__input_type_place');
 const cardLink = document.querySelector('.popup__input_type_image-link');
 const popupList = document.querySelectorAll('.popup');
-console.log(popupList);
+
 //Функция открытия попапов 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
