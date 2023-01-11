@@ -96,7 +96,6 @@ initialCards.forEach((title) => {
   renderCards(title);
 })
 
-
 const handleCardSubmit = (event) => {
   event.preventDefault();
   createInitialCard(cardPlace, cardLink);
@@ -115,11 +114,4 @@ popupProfileAddButton.addEventListener('click', () => openPopup(popupAddCard));
 popupCardCloseButton.addEventListener('click', () => closePopup(popupAddCard));
 imagePopupCloseButton.addEventListener('click', () => closePopup(imagePopup));
 
-//закрытие попапов клавишей Esc
-// popupEditProfile.addEventListener('keydown', () => keyPress(popupEditProfile));
-// function keyPress (popup, e) {
-//   if(e.key === "Escape") {
-//       closePopup(popup);
-//       console.log("lolo")
-//   }
-// }
+//Валидация форм

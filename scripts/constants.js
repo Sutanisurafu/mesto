@@ -25,3 +25,14 @@ const initialCards = [
     link: 'https://images.unsplash.com/photo-1617835594990-7cd5a9b5d153?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
   }
 ]; 
+
+
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-btn',
+    inactiveButtonClass: 'popup__submit-btn_invalid',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'error_visible',
+    fieldSetSelector: '.popup__container'
+}
