@@ -26,7 +26,7 @@ const initialCards = [
   }
 ]; 
 
-
+//Файл валидации
 const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -36,3 +36,6 @@ const validationConfig = {
     errorClass: 'error_visible',
     fieldSetSelector: '.popup__container'
 }
+
+//Константы клавиш 
+const ESC = 27;

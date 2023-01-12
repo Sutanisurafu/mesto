@@ -36,9 +36,9 @@ const setEventListeners = (config, formElement) => {
 function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-  formElement.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-  });
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
 const fieldsetList = Array.from(document.querySelectorAll(config.fieldSetSelector));
     fieldsetList.forEach((fieldSet) => {
     setEventListeners(config, fieldSet); 
@@ -57,7 +57,9 @@ function hasInvalidInput(inputList) {
 function toggleButtonState(config, inputList, buttonElement) {
   if (hasInvalidInput(inputList) === true) {
     buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.setAttribute("disabled", "disabled");
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.removeAttribute("disabled", "disabled");
   }
 }
