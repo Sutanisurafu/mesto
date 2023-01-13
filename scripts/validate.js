@@ -47,19 +47,20 @@ const fieldsetList = Array.from(document.querySelectorAll(config.fieldSetSelecto
 };
 
 enableValidation(validationConfig);
-
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
   return !inputElement.validity.valid;
 }); 
 }
 
+
+
 function toggleButtonState(config, inputList, buttonElement) {
   if (hasInvalidInput(inputList) === true) {
-    buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.setAttribute("disabled", "disabled");
+    buttonElement.classList.add(config.inactiveButtonClass);
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass);
-    buttonElement.removeAttribute("disabled", "disabled");
+    buttonElement.removeAttribute("disabled");
   }
 }

@@ -8,11 +8,9 @@ const popupInputName = document.querySelector('.popup__input_type_name');
 const popupInputSpeciality = document.querySelector('.popup__input_type_speciality');
 const popupEditProfileForm = document.querySelector('.popup__form');
 const popupAddCard = document.querySelector('.popup_type_add-card');
-const popupAddCardForm = document.getElementsByName('card-form')[0];
+const popupAddCardForm = document.querySelector('.popup__form_type_card');
 const popupCardCloseButton = document.querySelector('.popup__close_type_cards');
-const cardName = document.getElementsByName('card-name');
-const cardImage = document.getElementsByName('card-image');
-const cardSubmitButton = document.getElementsByName('card-submit-btn');
+const cardSubmitButton = document.querySelector('.popup__submit-btn_type_card');
 const imagePopup = document.querySelector('.popup_type_image-popup');
 const imagePopupCloseButton = document.querySelector('.popup__image-close-btn');
 const imagePopupItem = document.querySelector('.popup__image-item');
@@ -20,6 +18,10 @@ const imagePopupCaption = document.querySelector('.popup__image-caption')
 const cardPlace = document.querySelector('.popup__input_type_place');
 const cardLink = document.querySelector('.popup__input_type_image-link');
 const popupList = document.querySelectorAll('.popup');
+
+
+
+
 
 //Функция дизейбла кнопки отправки форм 
 
@@ -47,8 +49,8 @@ function closePopup(popup) {
 
   //Функция закрытия попапов клавишей Esc
   function closePopupWithEsc(evt)  {
-    const popupOpened = document.querySelector('.popup_opened')
     if (evt.keyCode == ESC) {
+        const popupOpened = document.querySelector('.popup_opened');
         closePopup(popupOpened);
     }
   }
@@ -115,8 +117,7 @@ const handleCardSubmit = (event) => {
   closePopup(popupAddCard);
   cardPlace.value = '';
   cardLink.value = '';
-  console.log(cardSubmitButton);
-  cardSubmitButton[0].setAttribute('disabled', '');
+  enableValidation(validationConfig);
 }
 
 //слушатели событий
