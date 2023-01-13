@@ -19,13 +19,6 @@ const cardPlace = document.querySelector('.popup__input_type_place');
 const cardLink = document.querySelector('.popup__input_type_image-link');
 const popupList = document.querySelectorAll('.popup');
 
-
-
-
-
-//Функция дизейбла кнопки отправки форм 
-
-
 //Функция открытия попапа редактирования профиля
 function openProfilePopup(popup) {
   popupInputName.value = profileName.textContent; 
@@ -36,6 +29,7 @@ function openProfilePopup(popup) {
 //Функция открытия попапов 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  enableValidation(validationConfig);
   document.addEventListener('keydown', closePopupWithEsc)
   document.addEventListener('click', closePopupWithOverlayClick)
 }
@@ -47,7 +41,7 @@ function closePopup(popup) {
   document.removeEventListener('click', closePopupWithOverlayClick)
 }
 
-  //Функция закрытия попапов клавишей Esc
+//Функция закрытия попапов клавишей Esc
   function closePopupWithEsc(evt)  {
     if (evt.keyCode == ESC) {
         const popupOpened = document.querySelector('.popup_opened');
@@ -55,7 +49,7 @@ function closePopup(popup) {
     }
   }
 
-  //Закрытие попапов нажатием на оверлей
+//Закрытие попапов нажатием на оверлей
 function closePopupWithOverlayClick(evt) {
   if (evt.target === document.querySelector('.popup_opened')) {
     closePopup(evt.target);
@@ -117,7 +111,6 @@ const handleCardSubmit = (event) => {
   closePopup(popupAddCard);
   cardPlace.value = '';
   cardLink.value = '';
-  enableValidation(validationConfig);
 }
 
 //слушатели событий
@@ -129,4 +122,3 @@ popupProfileAddButton.addEventListener('click', () => openPopup(popupAddCard));
 popupCardCloseButton.addEventListener('click', () => closePopup(popupAddCard));
 imagePopupCloseButton.addEventListener('click', () => closePopup(imagePopup));
 
-//Валидация форм

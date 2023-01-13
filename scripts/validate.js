@@ -53,8 +53,6 @@ function hasInvalidInput(inputList) {
 }); 
 }
 
-
-
 function toggleButtonState(config, inputList, buttonElement) {
   if (hasInvalidInput(inputList) === true) {
     buttonElement.setAttribute("disabled", "disabled");
