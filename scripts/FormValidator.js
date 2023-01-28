@@ -7,17 +7,17 @@ class FormValidator {
     
   }
 
-  enableValidation(formElement, config) {
+  enableValidation() {
     this._toggleButtonState();
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      this._toggleButtonState();
-    });
-    const fieldSet = formElement.offsetParent
-    this._setEventListeners(fieldSet, config);
+    const fieldSet = this._formElement.offsetParent
+    this._setEventListeners(fieldSet, this._config);
   };
 
    _setEventListeners() {
+      this._formElement.addEventListener('submit', (evt) => {
+        evt.preventDefault();
+        this._toggleButtonState();
+      });
       this._inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
           this._toggleButtonState();

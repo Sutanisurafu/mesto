@@ -62,4 +62,11 @@ const imagePopupCaption = document.querySelector('.popup__image-caption')
 const cardPlace = document.querySelector('.popup__input_type_place');
 const cardLink = document.querySelector('.popup__input_type_image-link');
 const cardsContainer = document.querySelector('.cards');
-const template = document.querySelector('#cards-template');
+const templateElement = document.querySelector('#cards-template');
+
+export {initialCards, validationConfig, profileEditButton, popupEditProfile,
+      popupEditProfileCloseButton, profileName, profileSpeciality,
+      popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
+      popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
+      cardSubmitButton, imagePopup, imagePopupCloseButton, imagePopupItem,
+      imagePopupCaption, cardPlace, cardLink, cardsContainer, templateElement, ESC};

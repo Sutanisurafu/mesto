@@ -1,5 +1,13 @@
 import  {Card}  from './Card.js';
 import {FormValidator} from './FormValidator.js';
+import { initialCards, validationConfig, profileEditButton, popupEditProfile,
+  popupEditProfileCloseButton, profileName, profileSpeciality,
+  popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
+  popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
+  imagePopup, imagePopupCloseButton, cardPlace, cardLink, cardsContainer, templateElement, ESC} 
+  from './constants.js';
+
+
 //Функция открытия попапа редактирования профиля
 function openProfilePopup(popup) {
   popupInputName.value = profileName.textContent; 
@@ -44,23 +52,25 @@ function handleFormSubmit (evt) {
   closePopup(popupEditProfile);
 }
 
-//функция добавления новой карточки на страницу
-const renderCards = () => {
-  const card = new Card(cardPlace.value, cardLink.value);
+//функция создания карты через класс
+function createCard(place, link) {
+  const card = new Card(place, link);
   const cardItem = card.createInitialCard();
-  cardsContainer.prepend(cardItem);
-  closePopup(popupAddCard);
-  cardPlace.value = '';
-  cardLink.value = '';
+  return cardItem;
 }
 
-//перебираю масив карточек  и создаю для каждого элемента, объект карточки
-initialCards.forEach((title) => {
-  const card = new Card(title.place, title.link);
-  const cardItem = card.createInitialCard(cardPlace.value, cardLink.value);
-  cardsContainer.append(cardItem);
-
-})
+//функция добавления новой карточки на страницу 
+const renderCards = () => { 
+  cardsContainer.prepend(createCard(cardPlace.value, cardLink.value)); 
+  closePopup(popupAddCard); 
+  cardPlace.value = ''; 
+  cardLink.value = ''; 
+} 
+ 
+//перебираю масив карточек  и создаю для каждого элемента, объект карточки 
+initialCards.forEach((title) => { 
+  cardsContainer.prepend(createCard(title.place, title.link));
+}) 
 
 //слушатели
 profileEditButton.addEventListener('click', () => openProfilePopup(popupEditProfile));
