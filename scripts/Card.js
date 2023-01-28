@@ -1,26 +1,9 @@
-import { openPopup, closePopup } from './index2.js'
+import { openPopup, closePopup } from './index.js'
 
 class Card {
   constructor(place, link) { 
     this._link = link;
     this._place = place;
-  }
-
-  _getTemplate() {
-    const template = document.querySelector('#cards-template').content
-    .querySelector('.card').cloneNode(true);
-    return template;
-  }
-
-  _setEventListeners =() => {
-    popupAddCardForm.addEventListener('submit', this._handleCardSubmit);
-  }
-  
-  _handleCardSubmit = (event) => {
-    event.preventDefault();
-    closePopup(popupAddCard);
-    cardPlace.value = '';
-    cardLink.value = '';
   }
 
   createInitialCard = (_place, _link) => {
@@ -31,7 +14,6 @@ class Card {
     this._card.querySelector('.card__title').textContent = this._place;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._place;
-    
     //функция добавления данных в попап картинки
     this._cardImage.addEventListener('click', () => { 
       openPopup(imagePopup);
@@ -49,9 +31,25 @@ class Card {
         const target = event.target
         target.classList.toggle('like-btn_active');
     });
-   
     return this._card;
   } 
+  
+  _getTemplate() {
+    const template = document.querySelector('#cards-template').content
+    .querySelector('.card').cloneNode(true);
+    return template;
+  }
+
+  _setEventListeners =() => {
+    popupAddCardForm.addEventListener('submit', this._handleCardSubmit);
+  }
+  
+  _handleCardSubmit = (event) => {
+    event.preventDefault();
+    closePopup(popupAddCard);
+    cardPlace.value = '';
+    cardLink.value = '';
+  }
 }
 
   export { Card };

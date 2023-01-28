@@ -52,6 +52,7 @@ const popupInputSpeciality = document.querySelector('.popup__input_type_speciali
 const popupEditProfileForm = document.querySelector('.popup__form');
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const popupAddCardForm = document.querySelector('.popup__form_type_card');
+const popupAddProfileForm = document.querySelector('.popup__form_type_profile');
 const popupCardCloseButton = document.querySelector('.popup__close_type_cards');
 const cardSubmitButton = document.querySelector('.popup__submit-btn_type_card');
 const imagePopup = document.querySelector('.popup_type_image-popup');
