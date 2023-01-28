@@ -39,3 +39,26 @@ const validationConfig = {
 
 //Константы клавиш 
 const ESC = 27;
+
+//константы элементов попапа
+const profileEditButton = document.querySelector('.profile__edit-btn');
+const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+const popupEditProfileCloseButton = document.querySelector('.popup__close_type_profile');
+const profileName = document.querySelector('.profile__title');
+const profileSpeciality = document.querySelector('.profile__text');
+const popupProfileAddButton = document.querySelector('.profile__add-btn');
+const popupInputName = document.querySelector('.popup__input_type_name');
+const popupInputSpeciality = document.querySelector('.popup__input_type_speciality');
+const popupEditProfileForm = document.querySelector('.popup__form');
+const popupAddCard = document.querySelector('.popup_type_add-card');
+const popupAddCardForm = document.querySelector('.popup__form_type_card');
+const popupCardCloseButton = document.querySelector('.popup__close_type_cards');
+const cardSubmitButton = document.querySelector('.popup__submit-btn_type_card');
+const imagePopup = document.querySelector('.popup_type_image-popup');
+const imagePopupCloseButton = document.querySelector('.popup__image-close-btn');
+const imagePopupItem = document.querySelector('.popup__image-item');
+const imagePopupCaption = document.querySelector('.popup__image-caption')
+const cardPlace = document.querySelector('.popup__input_type_place');
+const cardLink = document.querySelector('.popup__input_type_image-link');
+const cardsContainer = document.querySelector('.cards');
+const template = document.querySelector('#cards-template');

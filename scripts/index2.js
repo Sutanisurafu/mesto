@@ -1,5 +1,4 @@
-
-
+import  {Card}  from './Card.js'
 //Функция открытия попапа редактирования профиля
 function openProfilePopup(popup) {
   popupInputName.value = profileName.textContent; 
@@ -10,7 +9,6 @@ function openProfilePopup(popup) {
 //Функция открытия попапов 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  enableValidation(validationConfig);
   document.addEventListener('keydown', closePopupWithEsc)
   document.addEventListener('click', closePopupWithOverlayClick)
 }
@@ -45,59 +43,33 @@ function handleFormSubmit (evt) {
   closePopup(popupEditProfile);
 }
 
-//добавление карточек на страницу через template
-
-
-const createInitialCard = (place, link) => {
-  const card = template.content.querySelector('.card').cloneNode(true);
-  const cardImage = card.querySelector('.card__image');
-  const likeBtn = card.querySelector('.like-btn');
-  const deleteBtn = card.querySelector('.trash-btn');
-  card.querySelector('.card__title').textContent = place;
-  cardImage.src = link;
-  cardImage.alt = place;
-  //функция добавления данных в попап картинки
-  cardImage.addEventListener('click', () => { 
-    openPopup(imagePopup);
-    imagePopupItem.src = card.querySelector('.card__image').src
-    imagePopupItem.alt = place;
-    imagePopupCaption.textContent = card.querySelector('.card__title').textContent
-  })
-  //удаление карточки
-  deleteBtn.addEventListener('click', (event) => {
-    event.stopPropagation();
-    card.remove();
-  })
-  //лайк карточки
-    likeBtn.addEventListener('click', (event) => {
-      const target = event.target
-      target.classList.toggle('like-btn_active');
-  });
-  return card;
-}
-
-const renderCards = ({place, link}) => {
-  cardsContainer.append(createInitialCard(place, link))
-}
-
-initialCards.forEach((title) => {
-  renderCards(title);
-})
-
-const handleCardSubmit = (event) => {
-  event.preventDefault();
-  createInitialCard(cardPlace, cardLink);
-  cardsContainer.prepend(createInitialCard(cardPlace.value, cardLink.value));
+//функция добавления новой карточки на страницу
+const renderCards = () => {
+  const card = new Card(cardPlace.value, cardLink.value);
+  const cardItem = card.createInitialCard();
+  cardsContainer.prepend(cardItem);
   closePopup(popupAddCard);
   cardPlace.value = '';
   cardLink.value = '';
 }
 
-//слушатели событий
+//перебираю масив карточек  и создаю для каждого элемента, объект карточки
+initialCards.forEach((title) => {
+  const card = new Card(title.place, title.link);
+  const cardItem = card.createInitialCard(cardPlace.value, cardLink.value);
+  cardsContainer.append(cardItem);
+
+})
+
+//слушатели
 profileEditButton.addEventListener('click', () => openProfilePopup(popupEditProfile));
 popupEditProfileCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
-popupEditProfileForm.addEventListener('submit', handleFormSubmit);
-popupAddCardForm.addEventListener('submit', handleCardSubmit);
 popupProfileAddButton.addEventListener('click', () => openPopup(popupAddCard));
 popupCardCloseButton.addEventListener('click', () => closePopup(popupAddCard));
+popupEditProfileForm.addEventListener('submit', handleFormSubmit);
+popupAddCardForm.addEventListener('submit', renderCards);
 imagePopupCloseButton.addEventListener('click', () => closePopup(imagePopup));
+//экспортирую функции открытия и закрытия попапов
+export { openPopup, closePopup };
+
+
