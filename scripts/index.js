@@ -55,7 +55,6 @@ function handleFormSubmit (evt) {
 //функция создания карты через класс
 function createCard(place, link, templateElement) {
   const card = new Card(place, link, templateElement);
-  console.log(templateElement);
   const cardItem = card.createInitialCard();
   return cardItem;
 }

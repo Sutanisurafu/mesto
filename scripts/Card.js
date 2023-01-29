@@ -7,7 +7,6 @@ class Card {
     this._link = link;
     this._place = place;
     this._templateElement = templateElement;
-    console.log(this)
   }
 
   createInitialCard = () => {
