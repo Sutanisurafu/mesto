@@ -3,11 +3,11 @@ import { openPopup, closePopup,} from './index.js'
 
 
 class Card {
-  constructor(place, link) { 
+  constructor(place, link, templateElement) { 
     this._link = link;
     this._place = place;
-    this._templateElement = document.
-    querySelector('#cards-template');
+    this._templateElement = templateElement;
+    console.log(this)
   }
 
   createInitialCard = () => {
@@ -21,6 +21,8 @@ class Card {
     this._setEVentListeners();
     return this._card;
   } 
+
+
 
   _setEVentListeners() {
     this._likeBtn.addEventListener('click', (event) => {

@@ -64,9 +64,10 @@ const cardLink = document.querySelector('.popup__input_type_image-link');
 const cardsContainer = document.querySelector('.cards');
 const templateElement = document.querySelector('#cards-template');
 
+
 export {initialCards, validationConfig, profileEditButton, popupEditProfile,
       popupEditProfileCloseButton, profileName, profileSpeciality,
       popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
       popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
       cardSubmitButton, imagePopup, imagePopupCloseButton, imagePopupItem,
-      imagePopupCaption, cardPlace, cardLink, cardsContainer, ESC };
+      imagePopupCaption, cardPlace, cardLink, cardsContainer, ESC, templateElement};

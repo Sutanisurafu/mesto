@@ -4,7 +4,7 @@ import { initialCards, validationConfig, profileEditButton, popupEditProfile,
   popupEditProfileCloseButton, profileName, profileSpeciality,
   popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
   popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
-  imagePopup, imagePopupCloseButton, cardPlace, cardLink, cardsContainer, ESC} 
+  imagePopup, imagePopupCloseButton, cardPlace, cardLink, cardsContainer, ESC, templateElement} 
   from './constants.js';
 
 
@@ -53,15 +53,16 @@ function handleFormSubmit (evt) {
 }
 
 //функция создания карты через класс
-function createCard(place, link) {
-  const card = new Card(place, link);
+function createCard(place, link, templateElement) {
+  const card = new Card(place, link, templateElement);
+  console.log(templateElement);
   const cardItem = card.createInitialCard();
   return cardItem;
 }
 
 //функция добавления новой карточки на страницу 
 const renderCards = () => { 
-  cardsContainer.prepend(createCard(cardPlace.value, cardLink.value)); 
+  cardsContainer.prepend(createCard(cardPlace.value, cardLink.value, templateElement)); 
   closePopup(popupAddCard); 
   cardPlace.value = ''; 
   cardLink.value = ''; 
@@ -75,7 +76,7 @@ const renderCards = () => {
 
 //перебираю масив карточек  и создаю для каждого элемента, объект карточки 
 initialCards.forEach((title) => { 
-  cardsContainer.prepend(createCard(title.place, title.link));
+  cardsContainer.prepend(createCard(title.place, title.link, templateElement));
 }) 
 
 //слушатели
