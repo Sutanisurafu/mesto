@@ -44,7 +44,8 @@ class Card {
       openPopup(imagePopup);
       imagePopupItem.src = this._link
       imagePopupItem.alt = this._place;
-      imagePopupCaption.textContent = this._card.querySelector('.card__title').textContent
+      imagePopupCaption.textContent = this._place;
+      console.log();
   }
   _getTemplate() { 
     const template = this._templateElement.content 

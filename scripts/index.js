@@ -66,6 +66,7 @@ const renderCards = () => {
   cardPlace.value = ''; 
   cardLink.value = ''; 
 } 
+
 //функция из класса кард          !!!!!
 // function handleCardClick(name, link) {
 //   устанавливаем ссылку
