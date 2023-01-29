@@ -69,4 +69,4 @@ export {initialCards, validationConfig, profileEditButton, popupEditProfile,
       popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
       popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
       cardSubmitButton, imagePopup, imagePopupCloseButton, imagePopupItem,
-      imagePopupCaption, cardPlace, cardLink, cardsContainer, templateElement, ESC};
+      imagePopupCaption, cardPlace, cardLink, cardsContainer, ESC };

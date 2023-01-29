@@ -4,7 +4,7 @@ import { initialCards, validationConfig, profileEditButton, popupEditProfile,
   popupEditProfileCloseButton, profileName, profileSpeciality,
   popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
   popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
-  imagePopup, imagePopupCloseButton, cardPlace, cardLink, cardsContainer, templateElement, ESC} 
+  imagePopup, imagePopupCloseButton, cardPlace, cardLink, cardsContainer, ESC} 
   from './constants.js';
 
 
@@ -66,7 +66,13 @@ const renderCards = () => {
   cardPlace.value = ''; 
   cardLink.value = ''; 
 } 
- 
+//функция из класса кард          !!!!!
+// function handleCardClick(name, link) {
+//   устанавливаем ссылку
+//   устанавливаем подпись картинке
+//   открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
+// }
+
 //перебираю масив карточек  и создаю для каждого элемента, объект карточки 
 initialCards.forEach((title) => { 
   cardsContainer.prepend(createCard(title.place, title.link));
