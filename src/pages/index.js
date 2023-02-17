@@ -1,15 +1,15 @@
-import Card  from './Card.js';
-import Section from './Section.js';
-import FormValidator from './FormValidator.js';
-import { initialCards, validationConfig, profileEditButton, popupEditProfile,
-  popupEditProfileCloseButton, profileName, profileSpeciality,
-  popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
-  popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
-  imagePopup, imagePopupCloseButton, cardPlace, cardLink, cardsContainer, ESC, templateElement} 
-  from './constants.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+import './index.css';
+import Card  from '../scripts/components/Card.js';
+import Section from '../scripts/components/Section.js';
+import FormValidator from '../scripts/utils/FormValidator';
+import {initialCards, validationConfig, profileEditButton, popupEditProfile,
+         profileName, profileSpeciality,popupProfileAddButton, popupAddCard,
+         popupAddCardForm, popupAddProfileForm, imagePopup, cardsContainer,
+         templateElement} 
+  from '../scripts/utils/constants.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import UserInfo from '../scripts/components/UserInfo.js';
 
   
 
@@ -90,10 +90,3 @@ profileEditButton.addEventListener('click', () => {
 
  
 
-
-//Валидация форнм
-// const profileValidation = new FormValidator(validationConfig, popupAddProfileForm); 
-// const cardValidation = new FormValidator(validationConfig, popupAddCardForm);
-
-// cardValidation.enableValidation();
-// profileValidation.enableValidation();

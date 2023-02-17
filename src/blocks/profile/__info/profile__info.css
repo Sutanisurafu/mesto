@@ -1,5 +1,6 @@
 .profile__info {
   margin: 0;
+  padding-right: auto;
   color: white;
   display: grid;
   grid-template-columns: auto min-content;

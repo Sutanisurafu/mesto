@@ -19,7 +19,7 @@ export default class Card {
     return this._card;
   } 
 
-
+  
 
   _setEVentListeners() {
     this._likeBtn.addEventListener('click', (event) => {
