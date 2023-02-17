@@ -30,7 +30,7 @@ renderInputValues (info) {
       e.preventDefault(); 
       this._callBack(this._getInputValues());
       this.close();
-    }, {once: true})
+    })
   }
 
 

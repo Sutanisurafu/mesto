@@ -12,7 +12,7 @@ export default class UserInfo {
       speciality: this._speciality.textContent
     }
   }
-//принимает новые данные  и добавляет на страницу
+
   setUserInfo(data) {
     this._name.textContent =  data.profile;
     this._speciality.textContent = data.speciality;

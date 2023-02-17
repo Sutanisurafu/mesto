@@ -17,10 +17,13 @@ import UserInfo from '../scripts/components/UserInfo.js';
 
 //Функция открытия картинки по нажатию на неё
 function handleCardClick() {
-  const popupCardImg = new PopupWithImage(imagePopup);
   popupCardImg.open(this._place, this._link);
 }
 
+//создаю объект попапа с картинкой 
+const popupCardImg = new PopupWithImage(imagePopup);
+popupCardImg.setEventListeners();
+ 
 //создаю объект информации о пользователе 
 const profileInfo = new UserInfo(
     {profile: profileName,
@@ -49,16 +52,21 @@ const cards = new Section({
 //отрисовываю карты на странице
 cards.rendererItems();
 
+
 //создаю объект попапа редактирования профиля
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupEditProfile,
   callBack: (data) => {
     profileInfo.setUserInfo(data);  
-
     return profileInfo;
     }
   }
 )
+popupProfileEdit.setEventListeners();
+//создаю объект валидации попапа редактирования профиля
+const profileValidation = new FormValidator(validationConfig, popupAddProfileForm);
+profileValidation.enableValidation();
+
 
 //создаю объект попапа добавления карточки
 const popupCardAdd = new PopupWithForm({
@@ -69,22 +77,21 @@ const popupCardAdd = new PopupWithForm({
     cards.addItem(card);
   }
 })
+popupCardAdd.setEventListeners();
+//создаю объект валидации попапа добавления карточки
+const cardValidation = new FormValidator(validationConfig, popupAddCardForm);
+cardValidation.enableValidation();
 
 
 //слушатель событий для кнопки добавления карточки
 popupProfileAddButton.addEventListener('click', () => {
   popupCardAdd.open();
-  const cardValidation = new FormValidator(validationConfig, popupAddCardForm);
-  cardValidation.enableValidation();
 })
-
 
 //слушатель событий для кнопки редактирования профиля
 profileEditButton.addEventListener('click', () => {
   popupProfileEdit.renderInputValues(profileInfo.getUserInfo())
   popupProfileEdit.open();
-  const profileValidation = new FormValidator(validationConfig, popupAddProfileForm);
-  profileValidation.enableValidation();
 });
 
 
