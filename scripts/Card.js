@@ -1,12 +1,10 @@
-import { imagePopupItem, imagePopup, imagePopupCaption} from './constants.js'
-import { openPopup, closePopup,} from './index.js'
 
-
-class Card {
-  constructor(place, link, templateElement) { 
+export default class Card {
+  constructor(place, link, templateElement, handleCardClick) { 
     this._link = link;
     this._place = place;
     this._templateElement = templateElement;
+    this._handleCardClick = handleCardClick;
   }
 
   createInitialCard = () => {
@@ -32,7 +30,7 @@ class Card {
       this._deleteCard(event)
     })
     this._cardImage.addEventListener('click', () => { 
-      this._handleImageClick();
+      this._handleCardClick();
     })
   }
   
@@ -40,13 +38,7 @@ class Card {
       this._card.remove();
   }
 
-  _handleImageClick() {
-      openPopup(imagePopup);
-      imagePopupItem.src = this._link
-      imagePopupItem.alt = this._place;
-      imagePopupCaption.textContent = this._place;
-      console.log();
-  }
+
   _getTemplate() { 
     const template = this._templateElement.content 
     .querySelector('.card').cloneNode(true); 
@@ -60,4 +52,3 @@ class Card {
 }
 }
 
-  export { Card };

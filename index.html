@@ -36,12 +36,12 @@
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="profile-form" class="popup__form popup__form_type_profile" action="#" method="get" novalidate>
         <label class="popup__label">
-          <input name="profile-name" id="profile-name" type="text" class="popup__input popup__input_type_name" placeholder="Введите имя" minlength="2" maxlength="20" required>
-          <span id="profile-name-error" class="error"></span>
+          <input name="profile" id="profile" type="text" class="popup__input popup__input_type_name" placeholder="Введите имя" minlength="2" maxlength="20" required>
+          <span id="profile-error" class="error"></span>
         </label>
         <label class="popup__label">
-          <input name="profile-speciality" id="profile-speciality" type="text" class="popup__input popup__input_type_speciality" placeholder="Введите специальность" minlength="2" maxlength="200" required>
-          <span id="profile-speciality-error" class="error"></span>
+          <input name="speciality" id="speciality" type="text" class="popup__input popup__input_type_speciality" placeholder="Введите специальность" minlength="2" maxlength="200" required>
+          <span id="speciality-error" class="error"></span>
         </label>
         <button name="profile-submit-btn" type="submit" class="popup__submit-btn popup__submit-btn_type_profile">Сохранить</button>
       </form>
@@ -66,7 +66,7 @@
   </div>
   <div class="popup popup_type_image-popup">
     <div class="popup__image-container">
-      <button class="popup__image-close-btn"></button>
+      <button class="popup__close popup__image-close-btn"></button>
       <img src="#" alt="" class="popup__image-item">
       <p class="popup__image-caption"></p>
     </div>

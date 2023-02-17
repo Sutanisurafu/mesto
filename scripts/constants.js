@@ -35,6 +35,7 @@ const validationConfig = {
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'error_visible',
     fieldSetSelector: '.popup__container'
+    
 }
 
 //Константы клавиш 
