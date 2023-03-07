@@ -10,12 +10,20 @@ import {initialCards, validationConfig, profileEditButton, popupEditProfile,
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
+import Api from '../scripts/components/Api.js'
 
-  
 
-const setCards = () => {
-  //получить карточки и передать их в new Section
-}
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-60",
+  headers: {
+      authorization: "82fce0f5-7c53-446f-a999-07e7ad879d1f",
+      "Content-Type": "application/json",
+  },
+})
+
+
+
+
 
 //Функция открытия картинки по нажатию на неё
 function handleCardClick() {
@@ -33,8 +41,8 @@ const profileInfo = new UserInfo(
 )
 
 //функция создания отдельной карточки
-function createCard(place, link, templateElement, handleCardClick) {
-  const card = new Card(place, link, templateElement, handleCardClick);
+function createCard(cardEl, templateElement, handleCardClick) {
+  const card = new Card(cardEl, templateElement, handleCardClick);
   const cardItem = card.createInitialCard();
   return cardItem;
 }
@@ -43,8 +51,8 @@ function createCard(place, link, templateElement, handleCardClick) {
 //создаю секцию для карточек
 const cards = new Section({
   items: initialCards,
-  renderer: (card) => {
-    const node = createCard(card.place, card.link,
+  renderer: (title) => {
+    const card = createCard(title.place, title.link,
     templateElement, handleCardClick); 
     cards.addItem(card);
   
@@ -59,7 +67,7 @@ cards.rendererItems();
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupEditProfile,
   callBack: (data) => {
-    profileInfo.setUserInfo(data);  
+    console.log(profileInfo.setUserInfo(data))
     return profileInfo;
     }
   }
@@ -99,3 +107,15 @@ profileEditButton.addEventListener('click', () => {
 
  
 
+//запрос кард
+// const getCards = () => {
+//   api.getCards()
+//   .then((cardsData) => {
+//     return cardsData;
+//     // cardsSection.rendererItems(cardsData);
+//   })
+// }
+
+
+//ТРАБЛЫ :
+//!!! не понимаю как пользоваться функцией объявленной ввиде константы =\

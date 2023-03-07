@@ -8,8 +8,8 @@ export default class Section {
 
 
   rendererItems() {
-   this._items.forEach(card => {
-    this._renderer(card)
+   this._items.forEach(title => {
+    this._renderer(title)
    })
   }
 
