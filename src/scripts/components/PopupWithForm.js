@@ -14,6 +14,7 @@ export default class PopupWithForm extends Popup {
       this._values[input.name] = input.value;   
     })
     return this._values;
+   
   }
 
 renderInputValues (info) {

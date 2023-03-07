@@ -10,8 +10,47 @@ import {initialCards, validationConfig, profileEditButton, popupEditProfile,
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
+import Api from '../scripts/components/Api.js'
 
+
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-60",
+  headers: {
+      authorization: "82fce0f5-7c53-446f-a999-07e7ad879d1f",
+      "Content-Type": "application/json",
+  },
+})
+
+
+
+
+//загружаю данные пользователя с сервера
+api.getUserInfo()
+.then((userData) => {
+    profileInfo.setUserInfo(userData);
+    
+})
+
+
+
+//загружаю карточки с сервера
+api.getCards()
+.then((cardsData) => {
+   //рендерю карточки в секцию
+  const cardsSection = new Section({
+    items: cardsData,
+    renderer: (cardEl) => {
+      const card = createCard(cardEl,
+      templateElement, handleCardClick); 
+      cardsSection.addItem(card);
+    }
+  }, cardsContainer)
   
+  //отрисовываю карты на странице
+  cardsSection.rendererItems();
+})
+
+
 
 
 
@@ -31,33 +70,22 @@ const profileInfo = new UserInfo(
 )
 
 //функция создания отдельной карточки
-function createCard(place, link, templateElement, handleCardClick) {
-  const card = new Card(place, link, templateElement, handleCardClick);
+function createCard(cardEl, templateElement, handleCardClick) {
+  const card = new Card(cardEl, templateElement, handleCardClick);
   const cardItem = card.createInitialCard();
   return cardItem;
 }
 
 
 //создаю секцию для карточек
-const cards = new Section({
-  items: initialCards,
-  renderer: (title) => {
-    const card = createCard(title.place, title.link,
-    templateElement, handleCardClick); 
-    cards.addItem(card);
-  
-  }
-}, cardsContainer)
 
-//отрисовываю карты на странице
-cards.rendererItems();
 
 
 //создаю объект попапа редактирования профиля
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupEditProfile,
   callBack: (data) => {
-    profileInfo.setUserInfo(data);  
+    console.log(profileInfo.setUserInfo(data))
     return profileInfo;
     }
   }
@@ -97,3 +125,15 @@ profileEditButton.addEventListener('click', () => {
 
  
 
+//запрос кард
+// const getCards = () => {
+//   api.getCards()
+//   .then((cardsData) => {
+//     return cardsData;
+//     // cardsSection.rendererItems(cardsData);
+//   })
+// }
+
+
+//ТРАБЛЫ :
+//!!! не понимаю как пользоваться функцией объявленной ввиде константы =\
