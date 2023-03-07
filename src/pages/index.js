@@ -24,43 +24,18 @@ const api = new Api({
 
 
 
-// //загружаю данные пользователя с сервера
-// api.getUserInfo()
-// .then((userData) => {
-//     profileInfo.setUserInfo(userData);
-//     console.log(userData)
-// })
-
-
-
-// //загружаю карточки с сервера
-// api.getCards()
-// .then((cardsData) => {
-//    //рендерю карточки в секцию
-//   const cardsSection = new Section({
-//     items: cardsData,
-//     renderer: (cardEl) => {
-//       const card = createCard(cardEl,
-//       templateElement, handleCardClick,
-//       ); 
-//       cardsSection.addItem(card);
-//     }
-//   }, cardsContainer)
-  
-//   //отрисовываю карты на странице
-//   cardsSection.rendererItems();
-// })
 
 let userId;
+
 
 Promise.all([api.getUserInfo(), api.getCards()])
 .then(([userData, cardsData]) => {
  profileInfo.setUserInfo(userData);
  userId = userData._id;
  const cardsSection = new Section({
-      items: cardsData,
-      renderer: (cardEl) => {
-        const card = createCard(cardEl,
+      items: cardsData.reverse(),
+      renderer: (cardInfo) => {
+        const card = createCard(cardInfo,
         templateElement, handleCardClick,
         userId); 
         cardsSection.addItem(card);
@@ -68,6 +43,33 @@ Promise.all([api.getUserInfo(), api.getCards()])
     }, cardsContainer)
     //отрисовываю карты на странице
     cardsSection.rendererItems();
+    //слушатель событий для кнопки добавления карточки
+    //создаю объект попапа добавления карточки
+const popupCardAdd = new PopupWithForm({
+  popupSelector: popupAddCard,
+  callBack: (cardInfo) => {
+    api.addCard(cardInfo)
+    .then((cardData) => {
+      console.log(cardData)
+      const card = createCard(cardData,
+        templateElement, handleCardClick,
+        userId);
+        cardsSection.addItem(card);
+    })
+  
+
+    // api.addCard(card)
+    // .then((cardData) => {
+    //   cards.addItem(cardData);
+    // }) 
+    
+  
+  }
+})
+popupProfileAddButton.addEventListener('click', () => {
+  popupCardAdd.open();
+})
+popupCardAdd.setEventListeners();
   })
 
 
@@ -89,8 +91,8 @@ const profileInfo = new UserInfo(
 )
 
 //функция создания отдельной карточки
-function createCard(cardEl, templateElement, handleCardClick, userId) {
-  const card = new Card(cardEl, templateElement, handleCardClick, userId);
+function createCard(cardInfo, templateElement, handleCardClick, userId) {
+  const card = new Card(cardInfo, templateElement, handleCardClick, userId);
   const cardItem = card.createInitialCard();
   return cardItem;
 }
@@ -115,25 +117,13 @@ const profileValidation = new FormValidator(validationConfig, popupAddProfileFor
 profileValidation.enableValidation();
 
 
-//создаю объект попапа добавления карточки
-const popupCardAdd = new PopupWithForm({
-  popupSelector: popupAddCard,
-  callBack: (data) => {
-    const card = createCard(data['card-name'], data['card-image'],
-    templateElement, handleCardClick);
-    cards.addItem(card);
-  }
-})
-popupCardAdd.setEventListeners();
+
 //создаю объект валидации попапа добавления карточки
 const cardValidation = new FormValidator(validationConfig, popupAddCardForm);
 cardValidation.enableValidation();
 
 
-//слушатель событий для кнопки добавления карточки
-popupProfileAddButton.addEventListener('click', () => {
-  popupCardAdd.open();
-})
+
 
 //слушатель событий для кнопки редактирования профиля
 profileEditButton.addEventListener('click', () => {
@@ -148,6 +138,7 @@ profileEditButton.addEventListener('click', () => {
 // const getCards = () => {
 //   api.getCards()
 //   .then((cardsData) => {
+//     console.log(cardsData)
 //     return cardsData;
 //     // cardsSection.rendererItems(cardsData);
 //   })
@@ -156,3 +147,7 @@ profileEditButton.addEventListener('click', () => {
 
 //ТРАБЛЫ :
 //!!! не понимаю как пользоваться функцией объявленной ввиде константы =\
+
+// getCards() хотя вроде начал понимать)
+// console.log()
+// console.log(api.addCard(initialCards[0]))

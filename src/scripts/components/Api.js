@@ -48,13 +48,13 @@ editAvatar(userAvatar) {
     }).then(this._checkResponse);
 }
 
-addCard(data) {
+addCard(cardData) {
     return fetch(`${this._url}/cards`, {
         method: "POST",
         headers: this._headers,
         body: JSON.stringify({
-            name: data['card-name'],
-            link: data['card-image'],
+            name: cardData.name,
+            link: cardData.link,
         }),
     }).then(this._checkResponse);
 }

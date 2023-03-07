@@ -8,7 +8,7 @@ export default class Card {
     this._place = cardInfo.name;
     this._link = cardInfo.link;
     this._userId = userId;
-  
+
   }
 
   createInitialCard = () => {  
@@ -22,7 +22,7 @@ export default class Card {
 
     this._setEVentListeners();
 
-    //проверка id пользователя для добавления иконки удаления
+    // проверка id пользователя для добавления иконки удаления
     if (this._ownerId === this._userId) {
       this._deleteBtn.classList.add('trash-btn_type_visible')
     }

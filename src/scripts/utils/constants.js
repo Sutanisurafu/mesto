@@ -1,7 +1,7 @@
 //массив данных карточек
 const initialCards = [
   {
-    place: 'Чусовая',
+    name: 'Чусовая',
     link: 'https://www.visit-tagil.ru/upload/iblock/fcb/chusovaya_reka_.jpg'
   },
   {
