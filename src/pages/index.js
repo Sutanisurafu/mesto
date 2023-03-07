@@ -46,7 +46,6 @@ const cards = new Section({
   renderer: (card) => {
     const node = createCard(card.place, card.link,
     templateElement, handleCardClick); 
-    debugger
     cards.addItem(card);
   
   }
