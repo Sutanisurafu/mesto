@@ -3,7 +3,6 @@ export default class UserInfo {
   constructor({profile, speciality}) {
     this._name = profile;
     this._speciality = speciality;
-    
   }
 
   getUserInfo = () => {
@@ -14,8 +13,8 @@ export default class UserInfo {
   }
 
   setUserInfo(data) {
-    this._name.textContent =  data.profile;
-    this._speciality.textContent = data.speciality;
+    this._name.textContent =  data.name;
+    this._speciality.textContent = data.about;
   }
 
 } 

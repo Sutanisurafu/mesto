@@ -1,13 +1,14 @@
 
 export default class Card {
-  constructor(place, link, templateElement, handleCardClick) { 
-    this._link = link;
-    this._place = place;
+  constructor(cardInfo, templateElement, handleCardClick) { 
+    this._card = cardInfo;
     this._templateElement = templateElement;
     this._handleCardClick = handleCardClick;
+    this._place = cardInfo.name;
+    this._link = cardInfo.link;
   }
 
-  createInitialCard = () => {
+  createInitialCard = () => {  
     this._card = this._getTemplate(); 
     this._cardImage = this._card.querySelector('.card__image');
     this._likeBtn = this._card.querySelector('.like-btn');
@@ -15,7 +16,9 @@ export default class Card {
     this._card.querySelector('.card__title').textContent = this._place;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._place;
+
     this._setEVentListeners();
+
     return this._card;
   } 
 
