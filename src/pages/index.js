@@ -13,7 +13,9 @@ import UserInfo from '../scripts/components/UserInfo.js';
 
   
 
-
+const setCards = () => {
+  //получить карточки и передать их в new Section
+}
 
 //Функция открытия картинки по нажатию на неё
 function handleCardClick() {
@@ -41,9 +43,10 @@ function createCard(place, link, templateElement, handleCardClick) {
 //создаю секцию для карточек
 const cards = new Section({
   items: initialCards,
-  renderer: (title) => {
-    const card = createCard(title.place, title.link,
+  renderer: (card) => {
+    const node = createCard(card.place, card.link,
     templateElement, handleCardClick); 
+    debugger
     cards.addItem(card);
   
   }
