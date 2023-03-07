@@ -1,11 +1,14 @@
 
 export default class Card {
-  constructor(cardInfo, templateElement, handleCardClick) { 
+  constructor(cardInfo, templateElement, handleCardClick, userId) { 
     this._card = cardInfo;
+    this._ownerId = cardInfo.owner._id;
     this._templateElement = templateElement;
     this._handleCardClick = handleCardClick;
     this._place = cardInfo.name;
     this._link = cardInfo.link;
+    this._userId = userId;
+  
   }
 
   createInitialCard = () => {  
@@ -19,7 +22,13 @@ export default class Card {
 
     this._setEVentListeners();
 
+    //проверка id пользователя для добавления иконки удаления
+    if (this._ownerId === this._userId) {
+      this._deleteBtn.classList.add('trash-btn_type_visible')
+    }
+
     return this._card;
+
   } 
 
   

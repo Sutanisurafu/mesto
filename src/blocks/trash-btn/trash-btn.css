@@ -10,6 +10,7 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
+  visibility: hidden;
 }
 
 .trash-btn:hover {

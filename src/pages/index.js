@@ -24,32 +24,51 @@ const api = new Api({
 
 
 
-//загружаю данные пользователя с сервера
-api.getUserInfo()
-.then((userData) => {
-    profileInfo.setUserInfo(userData);
-    
-})
+// //загружаю данные пользователя с сервера
+// api.getUserInfo()
+// .then((userData) => {
+//     profileInfo.setUserInfo(userData);
+//     console.log(userData)
+// })
 
 
 
-//загружаю карточки с сервера
-api.getCards()
-.then((cardsData) => {
-   //рендерю карточки в секцию
-  const cardsSection = new Section({
-    items: cardsData,
-    renderer: (cardEl) => {
-      const card = createCard(cardEl,
-      templateElement, handleCardClick); 
-      cardsSection.addItem(card);
-    }
-  }, cardsContainer)
+// //загружаю карточки с сервера
+// api.getCards()
+// .then((cardsData) => {
+//    //рендерю карточки в секцию
+//   const cardsSection = new Section({
+//     items: cardsData,
+//     renderer: (cardEl) => {
+//       const card = createCard(cardEl,
+//       templateElement, handleCardClick,
+//       ); 
+//       cardsSection.addItem(card);
+//     }
+//   }, cardsContainer)
   
-  //отрисовываю карты на странице
-  cardsSection.rendererItems();
-})
+//   //отрисовываю карты на странице
+//   cardsSection.rendererItems();
+// })
 
+let userId;
+
+Promise.all([api.getUserInfo(), api.getCards()])
+.then(([userData, cardsData]) => {
+ profileInfo.setUserInfo(userData);
+ userId = userData._id;
+ const cardsSection = new Section({
+      items: cardsData,
+      renderer: (cardEl) => {
+        const card = createCard(cardEl,
+        templateElement, handleCardClick,
+        userId); 
+        cardsSection.addItem(card);
+      }
+    }, cardsContainer)
+    //отрисовываю карты на странице
+    cardsSection.rendererItems();
+  })
 
 
 
@@ -70,8 +89,8 @@ const profileInfo = new UserInfo(
 )
 
 //функция создания отдельной карточки
-function createCard(cardEl, templateElement, handleCardClick) {
-  const card = new Card(cardEl, templateElement, handleCardClick);
+function createCard(cardEl, templateElement, handleCardClick, userId) {
+  const card = new Card(cardEl, templateElement, handleCardClick, userId);
   const cardItem = card.createInitialCard();
   return cardItem;
 }
