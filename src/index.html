@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" href="data:;base64,=">
+
   <title>Mesto</title>
 </head>
 
@@ -36,11 +36,11 @@
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="profile-form" class="popup__form popup__form_type_profile" action="#" method="get" novalidate>
         <label class="popup__label">
-          <input name="profile" id="profile" type="text" class="popup__input popup__input_type_name" placeholder="Введите имя" minlength="2" maxlength="20" required>
+          <input name="name" id="profile" type="text" class="popup__input popup__input_type_name" placeholder="Введите имя" minlength="2" maxlength="20" required>
           <span id="profile-error" class="error"></span>
         </label>
         <label class="popup__label">
-          <input name="speciality" id="speciality" type="text" class="popup__input popup__input_type_speciality" placeholder="Введите специальность" minlength="2" maxlength="200" required>
+          <input name="about" id="speciality" type="text" class="popup__input popup__input_type_speciality" placeholder="Введите специальность" minlength="2" maxlength="200" required>
           <span id="speciality-error" class="error"></span>
         </label>
         <button name="profile-submit-btn" type="submit" class="popup__submit-btn popup__submit-btn_type_profile">Сохранить</button>
@@ -75,7 +75,10 @@
     <article class="card">
       <img src="#" alt="" class="card__image">
       <h2 class="card__title"></h2>
-      <button type="button" class="like-btn"></button>
+      <div class="response-container">
+        <button type="button" class="response-container__like-btn"></button>
+        <span class="response-container__like-counter">1</span>
+      </div>
       <button type="button" class="trash-btn"></button>
     </article>
   </template>

@@ -1,8 +1,8 @@
-.like-btn {
+.response-container__like-btn {
   padding: 0;
   cursor: pointer;
   margin-right: 20px;
-  background-image: url(../../image/like-button.svg);
+  background-image: url(../../../image/like-button.svg);
   background-repeat: no-repeat;
   background-color: white;
   align-self: center;
@@ -10,13 +10,9 @@
   width: 22px;
   height: 20px;
   border-style: none;
-  grid-column: 1;
-  justify-self: flex-end;
-  grid-row: 2;
 }
 
-
-.like-btn:hover {
+.response-container__like-btn:hover {
   opacity: 0.5;
 }
 

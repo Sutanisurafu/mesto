@@ -32,8 +32,8 @@ editUserInfo(data) {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
-            name: data._name,
-            about: data._speciality,
+            name: data.name,
+            about: data.about,
         }),
     }).then(this._checkResponse);
 }

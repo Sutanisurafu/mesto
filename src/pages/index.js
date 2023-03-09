@@ -22,7 +22,10 @@ const api = new Api({
 })
 
 
-
+const kyky = {
+  name: "lol",
+  about: "lyl"
+}
 
 
 let userId;
@@ -50,26 +53,19 @@ const popupCardAdd = new PopupWithForm({
   callBack: (cardInfo) => {
     api.addCard(cardInfo)
     .then((cardData) => {
-      console.log(cardData)
       const card = createCard(cardData,
         templateElement, handleCardClick,
         userId);
         cardsSection.addItem(card);
     })
-  
-
-    // api.addCard(card)
-    // .then((cardData) => {
-    //   cards.addItem(cardData);
-    // }) 
-    
-  
   }
+
 })
 popupProfileAddButton.addEventListener('click', () => {
   popupCardAdd.open();
 })
 popupCardAdd.setEventListeners();
+console.log(userData)
   })
 
 
@@ -106,7 +102,8 @@ function createCard(cardInfo, templateElement, handleCardClick, userId) {
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupEditProfile,
   callBack: (data) => {
-    console.log(profileInfo.setUserInfo(data))
+    profileInfo.setUserInfo(data)
+    api.editUserInfo(data);
     return profileInfo;
     }
   }
@@ -132,22 +129,3 @@ profileEditButton.addEventListener('click', () => {
 });
 
 
- 
-
-//запрос кард
-// const getCards = () => {
-//   api.getCards()
-//   .then((cardsData) => {
-//     console.log(cardsData)
-//     return cardsData;
-//     // cardsSection.rendererItems(cardsData);
-//   })
-// }
-
-
-//ТРАБЛЫ :
-//!!! не понимаю как пользоваться функцией объявленной ввиде константы =\
-
-// getCards() хотя вроде начал понимать)
-// console.log()
-// console.log(api.addCard(initialCards[0]))

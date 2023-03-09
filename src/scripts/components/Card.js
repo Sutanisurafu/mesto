@@ -14,7 +14,7 @@ export default class Card {
   createInitialCard = () => {  
     this._card = this._getTemplate(); 
     this._cardImage = this._card.querySelector('.card__image');
-    this._likeBtn = this._card.querySelector('.like-btn');
+    this._likeBtn = this._card.querySelector('.response-container__like-btn');
     this._deleteBtn = this._card.querySelector('.trash-btn');
     this._card.querySelector('.card__title').textContent = this._place;
     this._cardImage.src = this._link;
@@ -60,7 +60,7 @@ export default class Card {
  
   _toggleLike(event) {
     const target = event.target
-    target.classList.toggle('like-btn_active');
+    target.classList.toggle('response-container__like-btn_active');
 }
 }
 
