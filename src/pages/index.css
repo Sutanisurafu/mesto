@@ -44,3 +44,4 @@
 @import url(../blocks/response-container/__like-btn/response-container__like-btn.css);
 @import url(../blocks/response-container/__like-btn/_active/response-container__like-btn_active.css);
 @import url(../blocks/response-container/__like-counter/response-container__like-counter.css);
+@import url(../blocks/popup/__submit-btn/_type/popup__submit-btn_type_confirm.css);

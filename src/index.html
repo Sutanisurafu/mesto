@@ -71,13 +71,20 @@
       <p class="popup__image-caption"></p>
     </div>
   </div>
+  <div class="popup popup_type_confirm-popup">
+    <div class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button class="popup__close popup__confirm-close-btn"></button>
+      <button name="confirm-submit-btn" type="submit" class="popup__submit-btn popup__submit-btn_type_confirm">Да</button>
+    </div>
+  </div>
   <template id="cards-template">
     <article class="card">
       <img src="#" alt="" class="card__image">
       <h2 class="card__title"></h2>
       <div class="response-container">
         <button type="button" class="response-container__like-btn"></button>
-        <span class="response-container__like-counter">1</span>
+        <span class="response-container__like-counter"></span>
       </div>
       <button type="button" class="trash-btn"></button>
     </article>

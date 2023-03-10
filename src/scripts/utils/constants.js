@@ -55,6 +55,7 @@ const popupAddCard = document.querySelector('.popup_type_add-card');
 const popupAddCardForm = document.querySelector('.popup__form_type_card');
 const popupAddProfileForm = document.querySelector('.popup__form_type_profile');
 const popupCardCloseButton = document.querySelector('.popup__close_type_cards');
+const popupConfirm = document.querySelector('.popup_type_confirm-popup');
 const cardSubmitButton = document.querySelector('.popup__submit-btn_type_card');
 const imagePopup = document.querySelector('.popup_type_image-popup');
 const imagePopupCloseButton = document.querySelector('.popup__image-close-btn');
@@ -71,4 +72,5 @@ export {initialCards, validationConfig, profileEditButton, popupEditProfile,
       popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
       popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
       cardSubmitButton, imagePopup, imagePopupCloseButton, imagePopupItem,
-      imagePopupCaption, cardPlace, cardLink, cardsContainer, ESC, templateElement};
+      imagePopupCaption, cardPlace, cardLink, cardsContainer, ESC, templateElement,
+      popupConfirm};

@@ -5,9 +5,10 @@ import FormValidator from '../scripts/utils/FormValidator';
 import {initialCards, validationConfig, profileEditButton, popupEditProfile,
          profileName, profileSpeciality,popupProfileAddButton, popupAddCard,
          popupAddCardForm, popupAddProfileForm, imagePopup, cardsContainer,
-         templateElement} 
+         templateElement, popupConfirm} 
   from '../scripts/utils/constants.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithConfirm from '../scripts/components/PopupWithConfirm.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import Api from '../scripts/components/Api.js'
@@ -22,12 +23,6 @@ const api = new Api({
 })
 
 
-const kyky = {
-  name: "lol",
-  about: "lyl"
-}
-
-
 let userId;
 
 
@@ -39,7 +34,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
       items: cardsData.reverse(),
       renderer: (cardInfo) => {
         const card = createCard(cardInfo,
-        templateElement, handleCardClick,
+        templateElement, cardFunctions,
         userId); 
         cardsSection.addItem(card);
       }
@@ -54,7 +49,7 @@ const popupCardAdd = new PopupWithForm({
     api.addCard(cardInfo)
     .then((cardData) => {
       const card = createCard(cardData,
-        templateElement, handleCardClick,
+        templateElement, cardFunctions,
         userId);
         cardsSection.addItem(card);
     })
@@ -65,10 +60,25 @@ popupProfileAddButton.addEventListener('click', () => {
   popupCardAdd.open();
 })
 popupCardAdd.setEventListeners();
-console.log(userData)
   })
 
 
+//объект функций для работы с карточками
+const cardFunctions = {
+  handleCardClick: function () {
+    popupCardImg.open(this._place, this._link);
+  },
+  handleDeleteBtnClick: function (event) {
+    popupDeleteCard.open();
+    // api.deleteCard(this._cardId)
+  },
+  handleCardAddLike: function () {
+    api.addLike(this._cardId)
+  },
+  handleCardDeleteLike: function () {
+    api.deleteLike(this._cardId)
+  }
+}
 
 
 //Функция открытия картинки по нажатию на неё
@@ -87,16 +97,11 @@ const profileInfo = new UserInfo(
 )
 
 //функция создания отдельной карточки
-function createCard(cardInfo, templateElement, handleCardClick, userId) {
-  const card = new Card(cardInfo, templateElement, handleCardClick, userId);
+function createCard(cardInfo, templateElement, cardFunctions, userId) {
+  const card = new Card(cardInfo, templateElement, cardFunctions, userId);
   const cardItem = card.createInitialCard();
   return cardItem;
 }
-
-
-//создаю секцию для карточек
-
-
 
 //создаю объект попапа редактирования профиля
 const popupProfileEdit = new PopupWithForm({
@@ -108,24 +113,32 @@ const popupProfileEdit = new PopupWithForm({
     }
   }
 )
+
 popupProfileEdit.setEventListeners();
+
+
 //создаю объект валидации попапа редактирования профиля
 const profileValidation = new FormValidator(validationConfig, popupAddProfileForm);
 profileValidation.enableValidation();
 
-
-
 //создаю объект валидации попапа добавления карточки
 const cardValidation = new FormValidator(validationConfig, popupAddCardForm);
 cardValidation.enableValidation();
-
-
-
 
 //слушатель событий для кнопки редактирования профиля
 profileEditButton.addEventListener('click', () => {
   popupProfileEdit.renderInputValues(profileInfo.getUserInfo())
   popupProfileEdit.open();
 });
+
+//слушатель событий для 
+
+//функция удаления карточки 
+
+
+
+
+
+
 
 
