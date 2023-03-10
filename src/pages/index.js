@@ -24,6 +24,9 @@ const api = new Api({
 
 
 let userId;
+// //попап подтверждения удаления
+const popupDeleteCard = new PopupWithConfirm(popupConfirm, removeCard)
+popupDeleteCard.setEventListeners();
 
 
 Promise.all([api.getUserInfo(), api.getCards()])
@@ -68,8 +71,10 @@ const cardFunctions = {
   handleCardClick: function () {
     popupCardImg.open(this._place, this._link);
   },
-  handleDeleteBtnClick: function (event) {
-    popupDeleteCard.open();
+  handleDeleteBtnClick: function () {
+    const card = this;
+    popupDeleteCard.open(card);
+    
     // api.deleteCard(this._cardId)
   },
   handleCardAddLike: function () {
@@ -81,10 +86,11 @@ const cardFunctions = {
 }
 
 
-//Функция открытия картинки по нажатию на неё
-function handleCardClick() {
-  popupCardImg.open(this._place, this._link);
+function removeCard() {
+  api.deleteCard(this._cardId)
+  this._card.deleteCard();
 }
+
 
 //создаю объект попапа с картинкой 
 const popupCardImg = new PopupWithImage(imagePopup);

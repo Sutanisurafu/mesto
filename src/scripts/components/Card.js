@@ -12,7 +12,7 @@ export default class Card {
     this._place = cardInfo.name;
     this._link = cardInfo.link;
     this._userId = userId;
-    this._likes = Array.from(cardInfo.likes);
+    this._likes = cardInfo.likes;
   }
 
   createInitialCard = () => {  
@@ -69,14 +69,13 @@ export default class Card {
     this._deleteBtn.addEventListener('click', (event) => {
       event.stopPropagation();
       this._handleDeleteBtnClick();
-      this._deleteCard(event)
     })
     this._cardImage.addEventListener('click', () => { 
       this._handleCardClick();
     })
   }
   
-  _deleteCard(event) {  
+  deleteCard() {  
       this._card.remove();
   }
 
