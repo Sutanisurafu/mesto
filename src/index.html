@@ -16,7 +16,7 @@
   <main class="content">
     <section class="profile">
      <div class="avatar-container">
-        <img class="avatar-container__image" src="" alt="Аватар">  <!--<%=require('./image/avatar.jpg')%>-->
+        <img class="avatar-container__image" src="" alt="Аватар">
         <div class="avatar-container__overlay">
           <button type="button" class="avatar-container__edit-btn">
           </button>
@@ -91,7 +91,7 @@
       <form name="avatar-form" class="popup__form popup__form_type_avatar" action="#" method="get" novalidate>
         <label class="popup__label">
           <input name="avatar" id="avatar-img" type="url" class="popup__input popup__input_type_avatar" placeholder="Ссылка на изображение аватара" required>
-          <span id="card-name-error" class="error"></span>
+          <span id="avatar-img-error" class="error"></span>
         </label>
         <button name="avatar-submit-btn" type="submit" class="popup__submit-btn popup__submit-btn_type_avatar">Сохранить</button>
       </form>

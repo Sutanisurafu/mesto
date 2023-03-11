@@ -145,6 +145,10 @@ const popupProfileAvatarEdit = new PopupWithForm({
 popupProfileAvatarEdit.setEventListeners();
 
 
+//создаю объект валидации попапа редактирования аватара
+const avatarValidation = new FormValidator(validationConfig, popupAvatar)
+avatarValidation.enableValidation();
+
 //создаю объект валидации попапа редактирования профиля
 const profileValidation = new FormValidator(validationConfig, popupAddProfileForm);
 profileValidation.enableValidation();
