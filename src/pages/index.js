@@ -136,7 +136,6 @@ const popupProfileAvatarEdit = new PopupWithForm({
   callBack: (data) => {
     api.editAvatar(data.avatar)
     .then((data) => {
-      console.log(data.avatar)
       profileInfo.setUserAvatar(data)
     })
     // profileInfo.setUserAvatar(data)
