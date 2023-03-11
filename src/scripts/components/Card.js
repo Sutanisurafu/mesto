@@ -15,6 +15,13 @@ export default class Card {
     this._likes = cardInfo.likes;
   }
 
+  // _findMyLike() {
+  //   this._likes.forEach(element => {
+  //     console.log(element)
+  //     return element;
+  //   });
+  // }
+
   createInitialCard = () => {  
     this._card = this._getTemplate(); 
     this._cardImage = this._card.querySelector('.card__image');
@@ -25,16 +32,11 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._place;
     this._likesCounter.textContent = this._likes.length;
-    // this._myLikes = this._likes.find(like => like._id === this._userId)
-    
-    
-    this._myLikes = this._likes.find(e => e._id === this._userId);
-    if (this._checkLike()) {
-      this._likeBtn.classList.add('response-container__like-btn_active')
-    }
- 
 
-    
+    this._myLikes = this._likes.find(e => e._id === this._userId);
+    if(this._myLikes) {
+
+    }
   
     // я ли лайкал , если я то тогле лайк
     // if() {
@@ -46,25 +48,63 @@ export default class Card {
     if (this._ownerId === this._userId) {
       this._deleteBtn.classList.add('trash-btn_type_visible')
     }
+    this._checkLike()
+
+
+
+
 
     return this._card;
   } 
 
+  //функция подмены
+ 
+
+
+
+  // if (this._checkLike()) {
+  //   this._likeBtn.classList.add('response-container__like-btn_active');
+  //   // this._likeFunction = this._handleCardDeleteLike;
+  // } else  {
+  //   this._likeBtn.classList.remove('response-container__like-btn_active');
+  //   // this._likeFunction = this._handleCardAddLike;
+  // }
+
 
   //проверяет есть ли 
   _checkLike() {
-    if(this._myLikes == undefined) {
-      return false;
+    if(this._myLikes) {
+      this._likeBtn.classList.add('response-container__like-btn_active')
     } else {
-      return true;
-    }
+      this._likeBtn.classList.remove('response-container__like-btn_active');
+        }
   }
 
+  _checkLiked(event) {
+    if(event.target.classList.contains('response-container__like-btn_active')) {
+      this._likeFunction = this._handleCardDeleteLike;
+      console.log("диз")
+    } else  {
+      this._likeFunction = this._handleCardAddLike;
+      console.log("лайк")
+    }
 
+    
+    }  //   if(event.target.classList('response-container__like-btn_active')) {
+  //     this._likeFunction = this._handleCardDeleteLike;
+  //   } {
+  //     this._likeFunction = this._handleCardAddLike;
+  //   }
+  // }
+
+
+
+
+ 
   _setEVentListeners() {
     this._likeBtn.addEventListener('click', (event) => {
+      this._checkLiked(event)  
       this._toggleLike(event)
-      this._handleCardAddLike();
     });
     this._deleteBtn.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -86,15 +126,21 @@ export default class Card {
   } 
 
   _toggleLike(event) {
+    this._likeFunction();
     const target = event.target
     target.classList.toggle('response-container__like-btn_active');
+
 }
     // _toggleLike(event) {
     //   const target = event.target
-    //   if(target.classList != 'response-container__like-btn_active') { console.log("лайкнул");
-    //     target.classList.add('response-container__like-btn_active') & this._handleCardAddLike();
-    //   } else {console.log("убрал лайк")
-    //     target.classList.remove('response-container__like-btn_active') & this._handleCardDeleteLike();}
+    //   if(target.classList != 'response-container__like-btn_active') {
+    //     target.classList.add('response-container__like-btn_active')
+    //      & this._handleCardAddLike(event);
+    //    } 
+
+    //   {console.log("убрал лайк");
+    //     target.classList.remove('response-container__like-btn_active') & this._handleCardDeleteLike();
+    //     this._likesCounter.textContent = this._likes.length;}
     // }
 }
 
