@@ -47,6 +47,7 @@ const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupEditProfileCloseButton = document.querySelector('.popup__close_type_profile');
 const profileName = document.querySelector('.profile__title');
 const profileSpeciality = document.querySelector('.profile__text');
+const profileAvatar = document.querySelector('.avatar-container__image');
 const popupProfileAddButton = document.querySelector('.profile__add-btn');
 const popupInputName = document.querySelector('.popup__input_type_name');
 const popupInputSpeciality = document.querySelector('.popup__input_type_speciality');
@@ -56,6 +57,8 @@ const popupAddCardForm = document.querySelector('.popup__form_type_card');
 const popupAddProfileForm = document.querySelector('.popup__form_type_profile');
 const popupCardCloseButton = document.querySelector('.popup__close_type_cards');
 const popupConfirm = document.querySelector('.popup_type_confirm-popup');
+const popupAvatar = document.querySelector('.popup_type_edit-avatar');
+const avatarEditButton = document.querySelector('.avatar-container__edit-btn')
 const cardSubmitButton = document.querySelector('.popup__submit-btn_type_card');
 const imagePopup = document.querySelector('.popup_type_image-popup');
 const imagePopupCloseButton = document.querySelector('.popup__image-close-btn');
@@ -67,10 +70,12 @@ const cardsContainer = document.querySelector('.cards');
 const templateElement = document.querySelector('#cards-template');
 
 
+
+
 export {initialCards, validationConfig, profileEditButton, popupEditProfile,
       popupEditProfileCloseButton, profileName, profileSpeciality,
       popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
       popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
       cardSubmitButton, imagePopup, imagePopupCloseButton, imagePopupItem,
       imagePopupCaption, cardPlace, cardLink, cardsContainer, ESC, templateElement,
-      popupConfirm};
+      popupConfirm, profileAvatar, popupAvatar, avatarEditButton};

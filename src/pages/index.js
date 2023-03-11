@@ -5,7 +5,7 @@ import FormValidator from '../scripts/utils/FormValidator';
 import {initialCards, validationConfig, profileEditButton, popupEditProfile,
          profileName, profileSpeciality,popupProfileAddButton, popupAddCard,
          popupAddCardForm, popupAddProfileForm, imagePopup, cardsContainer,
-         templateElement, popupConfirm} 
+         templateElement, popupConfirm, profileAvatar, popupAvatar, avatarEditButton} 
   from '../scripts/utils/constants.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithConfirm from '../scripts/components/PopupWithConfirm.js';
@@ -40,7 +40,6 @@ Promise.all([api.getUserInfo(), api.getCards()])
     }, cardsContainer)
     //отрисовываю карты на странице
     cardsSection.rendererItems();
-    //слушатель событий для кнопки добавления карточки
     //создаю объект попапа добавления карточки
 const popupCardAdd = new PopupWithForm({
   popupSelector: popupAddCard,
@@ -107,8 +106,10 @@ popupCardImg.setEventListeners();
 //создаю объект информации о пользователе 
 const profileInfo = new UserInfo(
     {profile: profileName,
-     speciality: profileSpeciality}
+     speciality: profileSpeciality,
+     avatar: profileAvatar}
 )
+
 
 //функция создания отдельной карточки
 function createCard(cardInfo, templateElement, cardFunctions, userId) {
@@ -120,15 +121,29 @@ function createCard(cardInfo, templateElement, cardFunctions, userId) {
 //создаю объект попапа редактирования профиля
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupEditProfile,
-  callBack: (data) => {
-    profileInfo.setUserInfo(data)
-    api.editUserInfo(data);
+  callBack: (inputData) => {
+    profileInfo.setUserInfo(inputData)
+    api.editUserInfo(inputData);
     return profileInfo;
     }
   }
 )
-
 popupProfileEdit.setEventListeners();
+
+// //создаю объект попапа редактирования аватара
+const popupProfileAvatarEdit = new PopupWithForm({
+  popupSelector: popupAvatar,
+  callBack: (data) => {
+    api.editAvatar(data.avatar)
+    .then((data) => {
+      console.log(data.avatar)
+      profileInfo.setUserAvatar(data)
+    })
+    // profileInfo.setUserAvatar(data)
+
+  }
+})
+popupProfileAvatarEdit.setEventListeners();
 
 
 //создаю объект валидации попапа редактирования профиля
@@ -145,7 +160,10 @@ profileEditButton.addEventListener('click', () => {
   popupProfileEdit.open();
 });
 
-//слушатель событий для 
+//слушатель событий для кнопки редактирования аватара
+avatarEditButton.addEventListener('click', () => {
+  popupProfileAvatarEdit.open();
+})
 
 //функция удаления карточки 
 

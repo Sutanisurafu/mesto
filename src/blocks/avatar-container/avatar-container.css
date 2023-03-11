@@ -1,0 +1,13 @@
+.avatar-container {
+  position: relative;
+}
+
+@media screen and (max-width: 650px) {
+  .avatar-container {
+    margin: 0;
+  }
+}
+
+.avatar-container:hover {
+  opacity: 1;
+}
