@@ -42,9 +42,9 @@ const validationConfig = {
 const ESC = 27;
 
 //константы элементов попапа
-const profileEditButton = document.querySelector('.profile__edit-btn');
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const popupEditProfileCloseButton = document.querySelector('.popup__close_type_profile');
+const profileEditButton = document.querySelector('.profile__edit-btn'); //кнопка редактирования профайла
+const popupEditProfile = document.querySelector('.popup_type_edit-profile'); //попап редактирования профайла
+const popupEditProfileCloseButton = document.querySelector('.popup__close_type_profile'); //кнопка закы
 const profileName = document.querySelector('.profile__title');
 const profileSpeciality = document.querySelector('.profile__text');
 const profileAvatar = document.querySelector('.avatar-container__image');
@@ -68,6 +68,7 @@ const cardPlace = document.querySelector('.popup__input_type_place');
 const cardLink = document.querySelector('.popup__input_type_image-link');
 const cardsContainer = document.querySelector('.cards');
 const templateElement = document.querySelector('#cards-template');
+const popupEditProfileSubmitBtn = document.querySelector('.popup__submit-btn_type_profile');
 
 
 
@@ -78,4 +79,4 @@ export {initialCards, validationConfig, profileEditButton, popupEditProfile,
       popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
       cardSubmitButton, imagePopup, imagePopupCloseButton, imagePopupItem,
       imagePopupCaption, cardPlace, cardLink, cardsContainer, ESC, templateElement,
-      popupConfirm, profileAvatar, popupAvatar, avatarEditButton};
+      popupConfirm, profileAvatar, popupAvatar, avatarEditButton, popupEditProfileSubmitBtn};

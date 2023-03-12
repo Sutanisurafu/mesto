@@ -2,10 +2,11 @@ import './index.css';
 import Card  from '../scripts/components/Card.js';
 import Section from '../scripts/components/Section.js';
 import FormValidator from '../scripts/utils/FormValidator';
-import {initialCards, validationConfig, profileEditButton, popupEditProfile,
+import {validationConfig, profileEditButton, popupEditProfile,
          profileName, profileSpeciality,popupProfileAddButton, popupAddCard,
          popupAddCardForm, popupAddProfileForm, imagePopup, cardsContainer,
-         templateElement, popupConfirm, profileAvatar, popupAvatar, avatarEditButton} 
+         templateElement, popupConfirm, profileAvatar, popupAvatar, avatarEditButton
+        } 
   from '../scripts/utils/constants.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithConfirm from '../scripts/components/PopupWithConfirm.js';
@@ -22,13 +23,16 @@ const api = new Api({
   },
 })
 
-
+//переменная для хранения ID пользователя
 let userId;
 
+
+//делаю запрос на сервер за данными юзера и карточек
 Promise.all([api.getUserInfo(), api.getCards()])
 .then(([userData, cardsData]) => {
  profileInfo.setUserInfo(userData);
  userId = userData._id;
+ //Создаю объект секции карточек
  const cardsSection = new Section({
       items: cardsData.reverse(),
       renderer: (cardInfo) => {
@@ -41,29 +45,38 @@ Promise.all([api.getUserInfo(), api.getCards()])
     //отрисовываю карты на странице
     cardsSection.rendererItems();
     //создаю объект попапа добавления карточки
-const popupCardAdd = new PopupWithForm({
-  popupSelector: popupAddCard,
-  callBack: (cardInfo) => {
-    api.addCard(cardInfo)
-    .then((cardData) => {
-      const card = createCard(cardData,
-        templateElement, cardFunctions,
-        userId);
-        cardsSection.addItem(card);
+    const popupCardAdd = new PopupWithForm({
+      popupSelector: popupAddCard,
+      callBack: (cardInfo) => {
+        api.addCard(cardInfo)
+        .then((cardData) => {
+          const card = createCard(cardData,
+            templateElement, cardFunctions,
+            userId);
+            cardsSection.addItem(card);
+            popupCardAdd.close();
+            popupCardAdd.renderLoading(false)
+        })
+      }
+    
     })
-  }
+    popupProfileAddButton.addEventListener('click', () => {
+      popupCardAdd.open();
+    })
+    popupCardAdd.setEventListeners();
+      })
 
-})
-popupProfileAddButton.addEventListener('click', () => {
-  popupCardAdd.open();
-})
-popupCardAdd.setEventListeners();
-  })
 
 
   // //попап подтверждения удаления
 const popupDeleteCard = new PopupWithConfirm(popupConfirm, removeCard)
 popupDeleteCard.setEventListeners();
+
+
+
+
+
+
 
 
 //объект функций для работы с карточками
@@ -79,7 +92,6 @@ const cardFunctions = {
     api.addLike(this._cardId)
     .then((cardData) => {
       this._likesCounter.textContent = cardData.likes.length
-        
     })
   },
   handleCardDeleteLike: function () {
@@ -93,6 +105,10 @@ const cardFunctions = {
 
 function removeCard() {
   api.deleteCard(this._cardId)
+  .then((data) => {
+    popupDeleteCard.renderLoading(false);
+    popupDeleteCard.close();
+  })
   this._card.deleteCard();
 }
 
@@ -123,7 +139,13 @@ const popupProfileEdit = new PopupWithForm({
   popupSelector: popupEditProfile,
   callBack: (inputData) => {
     profileInfo.setUserInfo(inputData)
-    api.editUserInfo(inputData);
+    api.editUserInfo(inputData)
+    .then((userData) => {
+      profileInfo.setUserAvatar(userData);
+      popupProfileEdit.close()
+      popupProfileEdit.renderLoading(false)
+    })
+
     return profileInfo;
     }
   }
@@ -136,13 +158,15 @@ const popupProfileAvatarEdit = new PopupWithForm({
   callBack: (data) => {
     api.editAvatar(data.avatar)
     .then((data) => {
+      popupProfileAvatarEdit.renderLoading();
+      popupProfileAvatarEdit.close();
       profileInfo.setUserAvatar(data)
     })
-    // profileInfo.setUserAvatar(data)
 
   }
 })
 popupProfileAvatarEdit.setEventListeners();
+
 
 
 //создаю объект валидации попапа редактирования аватара
@@ -168,7 +192,6 @@ avatarEditButton.addEventListener('click', () => {
   popupProfileAvatarEdit.open();
 })
 
-//функция удаления карточки 
 
 
 

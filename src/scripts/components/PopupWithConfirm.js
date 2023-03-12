@@ -9,8 +9,8 @@ export default class PopupWithConfirm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     this._submitBtn.addEventListener('click', () => {
+      this.renderLoading(true);
       this._callBack();
-      this.close();
     })
     }
 
@@ -20,4 +20,11 @@ export default class PopupWithConfirm extends Popup {
       this._card = card;   
     }
 
+    renderLoading(isLoading) {
+      if(isLoading) {
+        this._submitBtn.textContent = "Загрузка"
+      } else {
+        this._submitBtn.textContent = "Да"
+      }
+    }
   }

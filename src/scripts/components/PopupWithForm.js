@@ -19,25 +19,30 @@ export default class PopupWithForm extends Popup {
 renderInputValues  (info) {
   this._inputs.forEach(input => {
     input.value = info[input.id];
-    
-  })
-  
+  }) 
 }
-
 
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener('submit', (e) =>{ 
-      e.preventDefault(); 
-      this._callBack(this._getInputValues());
-      this.close();
+    this._form.addEventListener('submit', (e) =>{
+      this.renderLoading(true);
+      e.preventDefault();
+      this._callBack(this._getInputValues())
+
     })
   }
-
 
   close() {
     super.close();
     this._form.reset();
-
   }
+
+  renderLoading(isLoading) {
+    if(isLoading) {
+      this._submitButton.textContent = "Загрузка"
+    } else {
+      this._submitButton.textContent = "Сохранить"
+    }
+  }
+
 }
