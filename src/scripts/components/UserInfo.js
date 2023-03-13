@@ -16,10 +16,19 @@ export default class UserInfo {
   setUserInfo(data) {
     this._name.textContent =  data.name;
     this._speciality.textContent = data.about;
-    this._avatar.src = data.avatar;
+    // this._avatar.src = data.avatar;
   }
 
   setUserAvatar(data) {
      this._avatar.src = data.avatar;
   }
+
+  setId(userId) {
+    this._userId = userId;//почему так работает?
+  }
+
+  getId() {
+    return this._userId;//почему так работает?
+  }
+
 } 

@@ -1,6 +1,6 @@
 
 export default class Card {
-  constructor(cardInfo, templateElement, functionsData, userId) { 
+  constructor(cardInfo, templateElement, functionsData, {userId}) { 
     this._card = cardInfo;
     this._cardId = cardInfo._id;
     this._ownerId = cardInfo.owner._id;

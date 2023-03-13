@@ -25,12 +25,23 @@ renderInputValues  (info) {
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', (e) =>{
-      this.renderLoading(true);
       e.preventDefault();
+      this.renderLoading(true)
       this._callBack(this._getInputValues())
-
     })
   }
+
+
+  // submit(e) {
+  //   e.preventDefault();
+  //   console.log(this._callBack)
+  //   this.renderLoading(true)
+  //   //проверка на асинхронный код
+  //   this._callBack(this._getInputValues())
+  //   .finally(() => {
+  //     this.renderLoading(false)
+  //   })
+  // }
 
   close() {
     super.close();
@@ -39,7 +50,7 @@ renderInputValues  (info) {
 
   renderLoading(isLoading) {
     if(isLoading) {
-      this._submitButton.textContent = "Загрузка"
+      this._submitButton.textContent = "Загрузка..."
     } else {
       this._submitButton.textContent = "Сохранить"
     }

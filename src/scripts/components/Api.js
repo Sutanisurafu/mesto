@@ -28,7 +28,7 @@ getCards() {
 }
 
 editUserInfo(data) {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-60/users/me`, {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({

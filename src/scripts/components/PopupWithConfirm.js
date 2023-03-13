@@ -22,7 +22,7 @@ export default class PopupWithConfirm extends Popup {
 
     renderLoading(isLoading) {
       if(isLoading) {
-        this._submitBtn.textContent = "Загрузка"
+        this._submitBtn.textContent = "Загрузка..."
       } else {
         this._submitBtn.textContent = "Да"
       }
