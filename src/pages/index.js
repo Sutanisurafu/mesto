@@ -1,7 +1,7 @@
 import './index.css';
 import Card  from '../scripts/components/Card.js';
 import Section from '../scripts/components/Section.js';
-import FormValidator from '../scripts/utils/FormValidator';
+import FormValidator from '../scripts/components/FormValidator.js';
 import {validationConfig, profileEditButton, popupEditProfile,
          profileName, profileSpeciality,popupProfileAddButton, popupAddCard,
          popupAddCardForm, popupAddProfileForm, imagePopup, cardsContainer,
@@ -70,10 +70,12 @@ const cardsSection = new Section({
             templateElement, cardFunctions,
             {userId: profileInfo.getId()});
             cardsSection.addItem(card);
-            popupCardAdd.close()               
+            popupCardAdd.close()   
           })
           .catch((err) => console.log(err))
-          .finally(() => {popupCardAdd.renderLoading(false)})
+          .finally(() => {popupCardAdd.renderLoading(false);
+            cardValidation.enableValidation()
+            })
 
       }
     
@@ -103,14 +105,16 @@ const cardFunctions = {
   handleCardAddLike: function () {
     api.addLike(this._cardId)
     .then((cardData) => {
-      this._likesCounter.textContent = cardData.likes.length
+      this.checkLike(cardData)
     })
+    .catch((err) => console.log(err))
   },
   handleCardDeleteLike: function () {
     api.deleteLike(this._cardId)
     .then((cardData) => {
-      this._likesCounter.textContent = cardData.likes.length
+      this.checkLike(cardData)
     })
+    .catch((err) => console.log(err))
   }
 }
 

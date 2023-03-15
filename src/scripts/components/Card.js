@@ -1,6 +1,5 @@
-
 export default class Card {
-  constructor(cardInfo, templateElement, functionsData, {userId}) { 
+  constructor(cardInfo, templateElement, functionsData, userId) { 
     this._card = cardInfo;
     this._cardId = cardInfo._id;
     this._ownerId = cardInfo.owner._id;
@@ -11,7 +10,7 @@ export default class Card {
     this._handleCardDeleteLike = functionsData.handleCardDeleteLike;
     this._place = cardInfo.name;
     this._link = cardInfo.link;
-    this._userId = userId;
+    this._userId = userId.userId;
     this._likes = cardInfo.likes;
   }
 
@@ -27,40 +26,51 @@ export default class Card {
     this._cardImage.alt = this._place;
     this._likesCounter.textContent = this._likes.length;
 
-    this._myLikes = this._likes.find(e => e._id === this._userId);
+    this._myLikes = this._likes.some(e => e._id === this._userId);
 
     this._setEVentListeners();
   // проверка id пользователя для добавления иконки удаления
     if (this._ownerId === this._userId) {
       this._deleteBtn.classList.add('trash-btn_type_visible')
     }
-    this._checkLike()
+    if (this._myLikes) {
+      this._likeBtn.classList.add('response-container__like-btn_active')
+    }
 
     return this._card;
   } 
 
-
-  //проверяет есть ли 
-  _checkLike() {
-    if(this._myLikes) {
-      this._likeBtn.classList.add('response-container__like-btn_active')
-    } else {
-      this._likeBtn.classList.remove('response-container__like-btn_active');
-        }
+  
+  setCounter(data){
+    this._likesCounter.textContent = data.likes.length;
   }
 
-  _checkLiked(event) {
-    if(event.target.classList.contains('response-container__like-btn_active')) {
-      this._likeFunction = this._handleCardDeleteLike;
+
+  //работает с датой сз колбека , обновляет массив лайков и меняет цвет кнопки
+  checkLike(data) {
+    if(this._myLikes) {
+      this._myLikes = data.likes.some(e => e._id === this._userId);
+      this.setCounter(data)
+      this._likeBtn.classList.remove('response-container__like-btn_active');
+    } else {
+      this._myLikes = data.likes.some(e => e._id === this._userId);
+      this.setCounter(data)
+      this._likeBtn.classList.add('response-container__like-btn_active')
+        }
+  }
+//проверяет стоит ли мой лайк, если стоит  то вызывает удалитель лайка
+  _checkLiked() {
+    if(this._myLikes) {
+      this._handleCardDeleteLike();
       } else  {
-        this._likeFunction = this._handleCardAddLike;
+      this._handleCardAddLike();
+
       }
     }
 
   _setEVentListeners() {
     this._likeBtn.addEventListener('click', (event) => {
-      this._checkLiked(event)  
-      this._toggleLike(event)
+      this._checkLiked();
     });
     this._deleteBtn.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -73,6 +83,7 @@ export default class Card {
   
   deleteCard() {  
       this._card.remove();
+      this._card = null;
   }
 
   _getTemplate() { 
@@ -81,11 +92,5 @@ export default class Card {
     return template; 
   } 
 
-  _toggleLike(event) {
-    this._likeFunction();
-    const target = event.target
-    target.classList.toggle('response-container__like-btn_active');
-
-  }
 }
 
