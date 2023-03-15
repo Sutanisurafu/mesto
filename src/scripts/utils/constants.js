@@ -44,23 +44,28 @@ const ESC = 27;
 //константы элементов попапа
 const profileEditButton = document.querySelector('.profile__edit-btn'); //кнопка редактирования профайла
 const popupEditProfile = document.querySelector('.popup_type_edit-profile'); //попап редактирования профайла
-const popupEditProfileCloseButton = document.querySelector('.popup__close_type_profile'); //кнопка закы
+const popupEditProfileSelector = '.popup_type_edit-profile';
+const popupEditProfileCloseButton = document.querySelector('.popup__close_type_profile');
 const profileName = document.querySelector('.profile__title');
 const profileSpeciality = document.querySelector('.profile__text');
 const profileAvatar = document.querySelector('.avatar-container__image');
-const popupProfileAddButton = document.querySelector('.profile__add-btn');
+const popupCardAddBtn = document.querySelector('.profile__add-btn');
 const popupInputName = document.querySelector('.popup__input_type_name');
 const popupInputSpeciality = document.querySelector('.popup__input_type_speciality');
 const popupEditProfileForm = document.querySelector('.popup__form');
-const popupAddCard = document.querySelector('.popup_type_add-card');
+const popupAddCard = document.querySelector('.popup_type_add-card');//попап добавления карты
+const popupAddCardSelector = '.popup_type_add-card';//селектор попапа добавления карты
 const popupAddCardForm = document.querySelector('.popup__form_type_card');
 const popupAddProfileForm = document.querySelector('.popup__form_type_profile');
 const popupCardCloseButton = document.querySelector('.popup__close_type_cards');
 const popupConfirm = document.querySelector('.popup_type_confirm-popup');
+const popupConfirmSelector = '.popup_type_confirm-popup';//селектор попапа подтверждения 
 const popupAvatar = document.querySelector('.popup_type_edit-avatar');
+const popupAvatarSelector = '.popup_type_edit-avatar';//селектор попапа редактирования аватара
 const avatarEditButton = document.querySelector('.avatar-container__edit-btn')
 const cardSubmitButton = document.querySelector('.popup__submit-btn_type_card');
 const imagePopup = document.querySelector('.popup_type_image-popup');
+const imagePopupSelector = '.popup_type_image-popup';//селектор попапа с картинкой
 const imagePopupCloseButton = document.querySelector('.popup__image-close-btn');
 const imagePopupItem = document.querySelector('.popup__image-item');
 const imagePopupCaption = document.querySelector('.popup__image-caption')
@@ -69,14 +74,17 @@ const cardLink = document.querySelector('.popup__input_type_image-link');
 const cardsContainer = document.querySelector('.cards');
 const templateElement = document.querySelector('#cards-template');
 const popupEditProfileSubmitBtn = document.querySelector('.popup__submit-btn_type_profile');
+const avatarContainer = document.querySelector('.avatar-container');
 
 
 
 
 export {initialCards, validationConfig, profileEditButton, popupEditProfile,
       popupEditProfileCloseButton, profileName, profileSpeciality,
-      popupProfileAddButton, popupInputName, popupInputSpeciality, popupEditProfileForm,
+      popupCardAddBtn, popupInputName, popupInputSpeciality, popupEditProfileForm,
       popupAddCard, popupAddCardForm, popupAddProfileForm, popupCardCloseButton,
       cardSubmitButton, imagePopup, imagePopupCloseButton, imagePopupItem,
       imagePopupCaption, cardPlace, cardLink, cardsContainer, ESC, templateElement,
-      popupConfirm, profileAvatar, popupAvatar, avatarEditButton, popupEditProfileSubmitBtn};
+      popupConfirm, profileAvatar, popupAvatar, avatarEditButton, popupEditProfileSubmitBtn,
+      popupEditProfileSelector, popupAddCardSelector, popupConfirmSelector, popupAvatarSelector,
+      imagePopupSelector, avatarContainer};

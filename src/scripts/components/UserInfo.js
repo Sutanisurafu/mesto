@@ -1,6 +1,6 @@
 
 export default class UserInfo {
-  constructor({profile, speciality, avatar}) {
+   constructor(profile, speciality, avatar) {
     this._name = profile;
     this._speciality = speciality;
     this._avatar = avatar;
@@ -16,7 +16,6 @@ export default class UserInfo {
   setUserInfo(data) {
     this._name.textContent =  data.name;
     this._speciality.textContent = data.about;
-    // this._avatar.src = data.avatar;
   }
 
   setUserAvatar(data) {
@@ -24,11 +23,11 @@ export default class UserInfo {
   }
 
   setId(userId) {
-    this._userId = userId;//почему так работает?
+    this._userId = userId;
   }
 
   getId() {
-    return this._userId;//почему так работает?
+    return this._userId;
   }
 
 } 

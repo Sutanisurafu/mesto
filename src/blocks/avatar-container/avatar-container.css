@@ -1,5 +1,6 @@
 .avatar-container {
   position: relative;
+  margin-right: 30px;
 }
 
 @media screen and (max-width: 650px) {
@@ -10,4 +11,5 @@
 
 .avatar-container:hover {
   opacity: 1;
+  cursor: pointer;
 }

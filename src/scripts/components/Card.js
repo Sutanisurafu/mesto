@@ -26,48 +26,49 @@ export default class Card {
     this._cardImage.alt = this._place;
     this._likesCounter.textContent = this._likes.length;
 
-    this._myLikes = this._likes.some(e => e._id === this._userId);
+    this._isLiked = this._likes.some(e => e._id === this._userId);
 
     this._setEVentListeners();
   // проверка id пользователя для добавления иконки удаления
     if (this._ownerId === this._userId) {
       this._deleteBtn.classList.add('trash-btn_type_visible')
     }
-    if (this._myLikes) {
+    if (this._isLiked) {
       this._likeBtn.classList.add('response-container__like-btn_active')
     }
 
     return this._card;
   } 
 
-  
-  setCounter(data){
-    this._likesCounter.textContent = data.likes.length;
-  }
-
-
   //работает с датой сз колбека , обновляет массив лайков и меняет цвет кнопки
-  checkLike(data) {
-    if(this._myLikes) {
-      this._myLikes = data.likes.some(e => e._id === this._userId);
-      this.setCounter(data)
+  checkLike(likes) {
+    if(this._isLiked) {
+      this._isLiked = likes.some(e => e._id === this._userId);
+      this._setCounter(likes)
       this._likeBtn.classList.remove('response-container__like-btn_active');
     } else {
-      this._myLikes = data.likes.some(e => e._id === this._userId);
-      this.setCounter(data)
+      this._isLiked = likes.some(e => e._id === this._userId);
+      this._setCounter(likes)
       this._likeBtn.classList.add('response-container__like-btn_active')
         }
   }
+
+  //обновляет счетчик лайков из даты с сервера
+  _setCounter(likes){
+    this._likesCounter.textContent = likes.length;
+  }
+
 //проверяет стоит ли мой лайк, если стоит  то вызывает удалитель лайка
   _checkLiked() {
-    if(this._myLikes) {
-      this._handleCardDeleteLike();
+    if(this._isLiked) {
+      this._handleCardDeleteLike(this.checkLike);
       } else  {
       this._handleCardAddLike();
 
       }
     }
 
+    //слушательСобытий
   _setEVentListeners() {
     this._likeBtn.addEventListener('click', (event) => {
       this._checkLiked();
@@ -80,12 +81,13 @@ export default class Card {
       this._handleCardClick();
     })
   }
-  
+  //удаляет карту
   deleteCard() {  
       this._card.remove();
       this._card = null;
   }
 
+  //возвращает
   _getTemplate() { 
     const template = this._templateElement.content 
     .querySelector('.card').cloneNode(true); 
