@@ -132,19 +132,18 @@ const cardFunctions = {
   handleCardClick: function () {
     popupCardImg.open(this.getCardInfo());
   },
-  handleDeleteBtnClick: function () {
-    const card = this;
+  handleDeleteBtnClick: function (card) {
     popupDeleteCard.open(card);
   },
-  handleCardAddLike: function () {
-    api.addLike(this.getCardId())
+  handleCardAddLike: function (cardId) {
+    api.addLike(cardId)
     .then((cardData) => {
       this.checkLike(cardData.likes)
     })
     .catch((err) => console.log(err))
   },
-  handleCardDeleteLike: function () {
-    api.deleteLike(this.getCardId())
+  handleCardDeleteLike: function (cardId) {
+    api.deleteLike(cardId)
     .then((cardData) => {
       this.checkLike(cardData.likes)
     })
@@ -152,15 +151,15 @@ const cardFunctions = {
   }
 }
 
+
 //функция удаления карточки
-function removeCard() {
-  api.deleteCard(this._cardId)
+function removeCard({id, cardObj}) {
+  api.deleteCard(id)
   .then((data) => {
-    this._card.deleteCard();
+    cardObj.deleteCard();
     popupDeleteCard.close();
   })
   .finally(() => {popupDeleteCard.renderLoading(false)})
-
 }
 
 
@@ -170,8 +169,6 @@ function createCard(cardInfo) {
   const cardItem = card.createInitialCard();
   return cardItem;
 }
-
-
 
 
 //создаю объект валидации попапа редактирования аватара

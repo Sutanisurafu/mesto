@@ -1,5 +1,6 @@
 export default class Card {
   constructor(cardInfo, templateElement, functionsData, userId) { 
+    this._test = cardInfo;
     this._card = cardInfo;
     this._cardId = cardInfo._id;
     this._ownerId = cardInfo.owner._id;
@@ -18,9 +19,9 @@ export default class Card {
     return {place: this._place, link: this._link};
   }
 
-  getCardId() {
-    return this._cardId
-  }
+  // getCardId() {
+  //   return this._cardId
+  // }
 
   createInitialCard = () => {  
     this._card = this._getTemplate(); 
@@ -68,9 +69,9 @@ export default class Card {
 //проверяет стоит ли мой лайк, если стоит  то вызывает удалитель лайка
   _checkLiked() {
     if(this._isLiked) {
-      this._handleCardDeleteLike(this.checkLike);
+      this._handleCardDeleteLike(this._cardId);
       } else  {
-      this._handleCardAddLike();
+      this._handleCardAddLike(this._cardId);
 
       }
     }
@@ -82,7 +83,7 @@ export default class Card {
     });
     this._deleteBtn.addEventListener('click', (event) => {
       event.stopPropagation();
-      this._handleDeleteBtnClick();
+      this._handleDeleteBtnClick({id: this._cardId, cardObj: this});
     })
     this._cardImage.addEventListener('click', () => { 
       this._handleCardClick();
