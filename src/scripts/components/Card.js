@@ -14,6 +14,13 @@ export default class Card {
     this._likes = cardInfo.likes;
   }
 
+  getCardInfo() {
+    return {place: this._place, link: this._link};
+  }
+
+  getCardId() {
+    return this._cardId
+  }
 
   createInitialCard = () => {  
     this._card = this._getTemplate(); 

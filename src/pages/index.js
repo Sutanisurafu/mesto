@@ -130,21 +130,21 @@ popupDeleteCard.setEventListeners();
 //объект функций для работы с карточками
 const cardFunctions = {
   handleCardClick: function () {
-    popupCardImg.open(this._place, this._link);
+    popupCardImg.open(this.getCardInfo());
   },
   handleDeleteBtnClick: function () {
     const card = this;
     popupDeleteCard.open(card);
   },
   handleCardAddLike: function () {
-    api.addLike(this._cardId)
+    api.addLike(this.getCardId())
     .then((cardData) => {
       this.checkLike(cardData.likes)
     })
     .catch((err) => console.log(err))
   },
   handleCardDeleteLike: function () {
-    api.deleteLike(this._cardId)
+    api.deleteLike(this.getCardId())
     .then((cardData) => {
       this.checkLike(cardData.likes)
     })
