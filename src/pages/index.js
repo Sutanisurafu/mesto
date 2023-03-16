@@ -129,8 +129,8 @@ popupDeleteCard.setEventListeners();
 
 //объект функций для работы с карточками
 const cardFunctions = {
-  handleCardClick: function () {
-    popupCardImg.open(this.getCardInfo());
+  handleCardClick: function (cardInfo) {
+    popupCardImg.open(cardInfo.place, cardInfo.link);
   },
   handleDeleteBtnClick: function (card) {
     popupDeleteCard.open(card);

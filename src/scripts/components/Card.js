@@ -14,9 +14,6 @@ export default class Card {
     this._likes = cardInfo.likes;
   }
 
-  getCardInfo() {
-    return {place: this._place, link: this._link};
-  }
 
   createInitialCard = () => {  
     this._card = this._getTemplate(); 
@@ -81,7 +78,7 @@ export default class Card {
       this._handleDeleteBtnClick({id: this._cardId, cardObj: this});
     })
     this._cardImage.addEventListener('click', () => { 
-      this._handleCardClick();
+      this._handleCardClick({place: this._place, link: this._link});
     })
   }
   //удаляет карту
