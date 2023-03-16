@@ -159,6 +159,7 @@ function removeCard({id, cardObj}) {
     cardObj.deleteCard();
     popupDeleteCard.close();
   })
+  .catch((err) => console.log(err))
   .finally(() => {popupDeleteCard.renderLoading(false)})
 }
 
