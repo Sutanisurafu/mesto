@@ -7,8 +7,9 @@ export default class FormValidator {
     
   }
 
+
   enableValidation() {
-    this._toggleButtonState();
+    this.toggleButtonState();
     const fieldSet = this._formElement.offsetParent
     this._setEventListeners();
   };
@@ -16,11 +17,11 @@ export default class FormValidator {
    _setEventListeners() {
       this._formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
-        this._toggleButtonState();
-      });
+        this.toggleButtonState();
+      })
       this._inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
-          this._toggleButtonState();
+          this.toggleButtonState();
           this._checkInputValidity(inputElement);
         })
       })
@@ -54,7 +55,7 @@ export default class FormValidator {
     }); 
     }
 
-    _toggleButtonState() {
+    toggleButtonState() {
       if (this._hasInvalidInput(this._inputList) === true) {
         this._buttonElement.setAttribute("disabled", "disabled");
         this._buttonElement.classList.add(this._config.inactiveButtonClass);

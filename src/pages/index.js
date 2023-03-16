@@ -53,9 +53,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
 //Создаю объект секции карточек
 const cardsSection = new Section({
   renderer: (cardInfo) => {
-    const card = createCard(cardInfo,
-    templateElement, cardFunctions,
-    {userId: profileInfo.getId()}); 
+    const card = createCard(cardInfo); 
     cardsSection.addItem(card);
   }
 }, cardsContainer)
@@ -66,15 +64,14 @@ const popupCardAdd = new PopupWithForm({
   callBack: (cardInfo) => {
     api.addCard(cardInfo)
     .then((cardData) => {
-      const card = createCard(cardData,
-      templateElement, cardFunctions,
-      {userId: profileInfo.getId()});
+      const card = createCard(cardData);
       cardsSection.addItem(card);
       popupCardAdd.close()
         })
         .catch((err) => console.log(err))
-        .finally(() => {popupCardAdd.renderLoading(false);
-        cardValidation.enableValidation()
+        .finally(() => {
+          popupCardAdd.renderLoading(false);
+          cardValidation.toggleButtonState();
         })
       }   
     })
@@ -92,8 +89,8 @@ const popupProfileEdit = new PopupWithForm({
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      popupProfileEdit.renderLoading(false)
-      profileValidation.enableValidation()
+      popupProfileEdit.renderLoading(false);
+      profileValidation.toggleButtonState();
     })
     return profileInfo;
     }
@@ -114,7 +111,7 @@ const popupProfileAvatarEdit = new PopupWithForm({
     .catch((err) => console.log(err))
     .finally(() => {
       popupProfileAvatarEdit.renderLoading(false)
-      avatarValidation.enableValidation()
+      avatarValidation.toggleButtonState();
     })  
   }
 })
@@ -133,21 +130,20 @@ popupDeleteCard.setEventListeners();
 //объект функций для работы с карточками
 const cardFunctions = {
   handleCardClick: function () {
-    popupCardImg.open(this._place, this._link);
+    popupCardImg.open(this.getCardInfo());
   },
-  handleDeleteBtnClick: function () {
-    const card = this;
+  handleDeleteBtnClick: function (card) {
     popupDeleteCard.open(card);
   },
-  handleCardAddLike: function () {
-    api.addLike(this._cardId)
+  handleCardAddLike: function (cardId) {
+    api.addLike(cardId)
     .then((cardData) => {
       this.checkLike(cardData.likes)
     })
     .catch((err) => console.log(err))
   },
-  handleCardDeleteLike: function () {
-    api.deleteLike(this._cardId)
+  handleCardDeleteLike: function (cardId) {
+    api.deleteLike(cardId)
     .then((cardData) => {
       this.checkLike(cardData.likes)
     })
@@ -155,26 +151,24 @@ const cardFunctions = {
   }
 }
 
+
 //функция удаления карточки
-function removeCard() {
-  api.deleteCard(this._cardId)
+function removeCard({id, cardObj}) {
+  api.deleteCard(id)
   .then((data) => {
-    this._card.deleteCard();
+    cardObj.deleteCard();
     popupDeleteCard.close();
   })
   .finally(() => {popupDeleteCard.renderLoading(false)})
-
 }
 
 
 //функция создания отдельной карточки
-function createCard(cardInfo, templateElement, cardFunctions, userId) {
-  const card = new Card(cardInfo, templateElement, cardFunctions, userId);
+function createCard(cardInfo) {
+  const card = new Card(cardInfo, templateElement, cardFunctions, profileInfo.getId());
   const cardItem = card.createInitialCard();
   return cardItem;
 }
-
-
 
 
 //создаю объект валидации попапа редактирования аватара
