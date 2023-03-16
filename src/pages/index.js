@@ -53,9 +53,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
 //Создаю объект секции карточек
 const cardsSection = new Section({
   renderer: (cardInfo) => {
-    const card = createCard(cardInfo,
-    templateElement, cardFunctions,
-    {userId: profileInfo.getId()}); 
+    const card = createCard(cardInfo); 
     cardsSection.addItem(card);
   }
 }, cardsContainer)
@@ -66,9 +64,7 @@ const popupCardAdd = new PopupWithForm({
   callBack: (cardInfo) => {
     api.addCard(cardInfo)
     .then((cardData) => {
-      const card = createCard(cardData,
-      templateElement, cardFunctions,
-      {userId: profileInfo.getId()});
+      const card = createCard(cardData);
       cardsSection.addItem(card);
       popupCardAdd.close()
         })
@@ -168,8 +164,8 @@ function removeCard() {
 
 
 //функция создания отдельной карточки
-function createCard(cardInfo, templateElement, cardFunctions, userId) {
-  const card = new Card(cardInfo, templateElement, cardFunctions, userId);
+function createCard(cardInfo) {
+  const card = new Card(cardInfo, templateElement, cardFunctions, profileInfo.getId());
   const cardItem = card.createInitialCard();
   return cardItem;
 }

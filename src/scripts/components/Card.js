@@ -10,7 +10,7 @@ export default class Card {
     this._handleCardDeleteLike = functionsData.handleCardDeleteLike;
     this._place = cardInfo.name;
     this._link = cardInfo.link;
-    this._userId = userId.userId;
+    this._userId = userId;
     this._likes = cardInfo.likes;
   }
 
