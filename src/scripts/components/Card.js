@@ -1,6 +1,5 @@
 export default class Card {
   constructor(cardInfo, templateElement, functionsData, userId) { 
-    this._test = cardInfo;
     this._card = cardInfo;
     this._cardId = cardInfo._id;
     this._ownerId = cardInfo.owner._id;
@@ -18,10 +17,6 @@ export default class Card {
   getCardInfo() {
     return {place: this._place, link: this._link};
   }
-
-  // getCardId() {
-  //   return this._cardId
-  // }
 
   createInitialCard = () => {  
     this._card = this._getTemplate(); 
