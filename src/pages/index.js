@@ -69,8 +69,9 @@ const popupCardAdd = new PopupWithForm({
       popupCardAdd.close()
         })
         .catch((err) => console.log(err))
-        .finally(() => {popupCardAdd.renderLoading(false);
-        cardValidation.enableValidation()
+        .finally(() => {
+          popupCardAdd.renderLoading(false);
+          cardValidation.toggleButtonState();
         })
       }   
     })
@@ -88,8 +89,8 @@ const popupProfileEdit = new PopupWithForm({
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      popupProfileEdit.renderLoading(false)
-      profileValidation.enableValidation()
+      popupProfileEdit.renderLoading(false);
+      profileValidation.toggleButtonState();
     })
     return profileInfo;
     }
@@ -110,7 +111,7 @@ const popupProfileAvatarEdit = new PopupWithForm({
     .catch((err) => console.log(err))
     .finally(() => {
       popupProfileAvatarEdit.renderLoading(false)
-      avatarValidation.enableValidation()
+      avatarValidation.toggleButtonState();
     })  
   }
 })
